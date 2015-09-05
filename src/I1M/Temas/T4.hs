@@ -1,11 +1,8 @@
--- |
--- Module      : T4
--- Description : Tema 4: Definición de funciones
--- License     : Creative Commons
--- Maintainer  : José A. Alonso
-
--- Este módulo contiene el código del <http://bit.ly/1IQoyye Tema 4>:
--- Definición de funciones
+-- I1M 2010-11: tema-4.hs
+-- Tema 4: Definición de funciones.
+-- José A. Alonso Jiménez <jalonso@us,es>
+-- Sevilla, 1 de Octubre de 2010
+-- =====================================================================
 
 module I1M.Temas.T4 where
 
@@ -18,8 +15,8 @@ import Prelude
 
 -- (isDigit c) se verifica si c es un dígito. Por ejemplo.
 -- 
--- > isDigit '3'  ==  True
--- > isDigit 'c'  ==  False
+--    isDigit '3'  ==  True
+--    isDigit 'c'  ==  False
 isDigit :: Char -> Bool
 isDigit c = (c >= '0') && (c <= '9')
 
