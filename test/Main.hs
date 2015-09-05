@@ -11,6 +11,7 @@ import Test.Tasty.HUnit
 import qualified T1Propiedades (tests)
 import qualified T2Propiedades (tests)
 import qualified T3Propiedades (tests)
+import qualified T4Propiedades (tests)
 
 main :: IO ()
 main = defaultMain tests
@@ -20,4 +21,5 @@ tests =
     [ T1Propiedades.tests
     , T2Propiedades.tests
     , T3Propiedades.tests
+    , T4Propiedades.tests
     ]
