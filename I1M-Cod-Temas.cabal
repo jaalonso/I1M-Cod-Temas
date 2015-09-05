@@ -30,6 +30,9 @@ test-suite test
   hs-source-dirs:      test
   main-is:             Main.hs 
   other-modules:       T1Propiedades
+                     , T2Propiedades
+                     , T3Propiedades
+                     , T4Propiedades
   build-depends:       I1M-Cod-Temas
                      , base >=4.8
                      , tasty >= 0.8
