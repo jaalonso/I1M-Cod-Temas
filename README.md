@@ -9,8 +9,6 @@ Los pasos para instalar las librerías son:
 + Cambiar al directorio I1M-Cod-Temas-master.
 + Ejecutar `cabal install I1M-Cod-Temas.cabal`
 
-La documentación se puede consultar [aquí](http://jaalonso.github.io/I1M-Cod-Temas/).
-
 Los códigos de los temas son
 
 + Tema 1: [Introducción a la programación funcional
