@@ -13,7 +13,8 @@ La documentación se puede consultar [aquí](http://jaalonso.github.io/I1M-Cod-T
 
 Los códigos de los temas son
 
-+ Tema 1: [Introducción a la programación funcional](src/I1M/T1.hs)
++ Tema 1: [Introducción a la programación funcional
+          ](src/I1M-Cod-Temas/T1.hs)
 + Tema 2: [Introducción a la programación con Haskell](src/I1M/T2.hs)
 + Tema 3: [Tipos y clases](src/I1M/T3.hs)
 
