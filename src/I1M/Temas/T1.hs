@@ -9,9 +9,6 @@
 
 module I1M.Temas.T1
     ( doble
-    , prop_doble
-    , prop_prod_suma
-    , prop_prod_suma'
     , suma
     , sumaLista
     , ordena

@@ -19,7 +19,20 @@ library
   exposed-modules:     I1M.Temas.T1
                      , I1M.Temas.T2
                      , I1M.Temas.T3
+                     , I1M.Temas.T4
   build-depends:       base >=4.8 && <4.9
                      , QuickCheck >= 2.8
   hs-source-dirs:      src
+  default-language:    Haskell2010
+
+test-suite test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs 
+  other-modules:       T1Propiedades
+  build-depends:       I1M-Cod-Temas
+                     , base >=4.8
+                     , tasty >= 0.8
+                     , tasty-quickcheck >= 0.8
+                     , tasty-hunit >= 0.8
   default-language:    Haskell2010
