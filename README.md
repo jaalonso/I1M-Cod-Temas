@@ -16,5 +16,7 @@ Los códigos de los temas son
 + Tema 1: [Introducción a la programación funcional
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T1.hs)
 + Tema 2: [Introducción a la programación con Haskell](src/I1M/T2.hs)
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T2.hs)
 + Tema 3: [Tipos y clases](src/I1M/T3.hs)
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T3.hs)
 
