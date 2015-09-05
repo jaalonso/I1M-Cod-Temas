@@ -20,5 +20,6 @@ library
                      , I1M.Temas.T2
                      , I1M.Temas.T3
   build-depends:       base >=4.8 && <4.9
+                     , QuickCheck >= 2.8
   hs-source-dirs:      src
   default-language:    Haskell2010
