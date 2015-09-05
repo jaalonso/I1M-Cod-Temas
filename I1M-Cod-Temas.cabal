@@ -20,6 +20,7 @@ library
                      , I1M.Temas.T2
                      , I1M.Temas.T3
                      , I1M.Temas.T4
+                     , I1M.Temas.T5
   build-depends:       base >=4.8 && <4.9
                      , QuickCheck >= 2.8
                      , tasty >= 0.8
@@ -36,6 +37,7 @@ test-suite test
                      , T2Propiedades
                      , T3Propiedades
                      , T4Propiedades
+                     , T5Propiedades
   build-depends:       I1M-Cod-Temas
                      , base >=4.8
                      , tasty >= 0.8

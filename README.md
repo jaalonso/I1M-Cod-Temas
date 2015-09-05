@@ -19,4 +19,6 @@ Los códigos de los temas son
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T3.hs)
 + Tema 4: [Definición de funciones
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T4.hs)
++ Tema 5: [Definiciones de listas por comprensión
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T5.hs)
 
