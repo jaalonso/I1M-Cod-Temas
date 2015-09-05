@@ -12,6 +12,7 @@ import qualified T1Propiedades (tests)
 import qualified T2Propiedades (tests)
 import qualified T3Propiedades (tests)
 import qualified T4Propiedades (tests)
+import qualified T5Propiedades (tests)
 
 main :: IO ()
 main = defaultMain tests
@@ -22,4 +23,5 @@ tests =
     , T2Propiedades.tests
     , T3Propiedades.tests
     , T4Propiedades.tests
+    , T5Propiedades.tests
     ]
