@@ -1,19 +1,31 @@
 -- I1M 2010-11: tema-4.hs
--- Tema 4: Definición de funciones.
--- José A. Alonso Jiménez <jalonso@us,es>
+-- Tema 4: DefiniciÃ³n de funciones.
+-- JosÃ© A. Alonso JimÃ©nez <jalonso@us,es>
 -- Sevilla, 1 de Octubre de 2010
 -- =====================================================================
 
 module I1M.Temas.T4 where
 
 import Prelude 
-    hiding (even,splitAt,abs,signum,not,(&&),fst,snd,null,head,tail,const)
+    hiding ( (&&)
+           , abs
+           , const
+           , even
+           , fst
+           , head
+           , not
+           , null
+           , pred
+           , signum
+           , snd
+           , splitAt
+           , tail)
 
 -- ---------------------------------------------------------------------
--- Definiciones por composición                                       --
+-- Definiciones por composiciÃ³n                                       --
 -- ---------------------------------------------------------------------
 
--- (isDigit c) se verifica si c es un dígito. Por ejemplo.
+-- (isDigit c) se verifica si c es un dÃ­gito. Por ejemplo.
 -- 
 --    isDigit '3'  ==  True
 --    isDigit 'c'  ==  False
@@ -67,27 +79,27 @@ signum' n | n < 0     = -1
           | otherwise = 1
 
 -- ---------------------------------------------------------------------
--- Definiciones con equiparación de patrones                          --
+-- Definiciones con equiparaciÃ³n de patrones                          --
 -- ---------------------------------------------------------------------
 
--- (not x) es la negación de x.
+-- (not x) es la negaciÃ³n de x.
 not :: Bool -> Bool
 not True  =  False
 not False =  True
 
--- (x && y) es la conjunción de x e y.
+-- (x && y) es la conjunciÃ³n de x e y.
 (&&)  :: Bool -> Bool -> Bool
 True  && True  = True
 True  && False = False
 False && True  = False
 False && False = False
 
--- (x &&1 y) es la conjunción de x e y.
+-- (x &&1 y) es la conjunciÃ³n de x e y.
 (&&&) :: Bool -> Bool -> Bool
 True  &&& True =  True
 _     &&& _    =  False
 
--- (x &&&& y) es la conjunción de x e y.
+-- (x &&&& y) es la conjunciÃ³n de x e y.
 (&&&&) :: Bool -> Bool -> Bool
 True  &&&& x =  x
 False &&&& _ =  False
@@ -114,7 +126,7 @@ test2 :: [Char ] -> Bool
 test2 ('a':_) = True
 test2 _       = False
 
--- (null xs) se verifica si xs es la lista vacía. Por ejemplo,
+-- (null xs) se verifica si xs es la lista vacÃ­a. Por ejemplo,
 --    null []     ==  True
 --    null [3,2]  ==  False
 null :: [a] -> Bool
@@ -161,12 +173,12 @@ const x y = x
 const' :: a -> (b -> a)
 const' x = \_ -> x
 
--- (impares n) es la lista de los primeros números impares. Por ejemplo,
+-- (impares n) es la lista de los primeros nÃºmeros impares. Por ejemplo,
 --    impares 4  ==  [1,3,5,7]
 impares n = map f [0..n-1]
     where f x = 2*x+1
 
--- (impares' n) es la lista de los primeros números impares. Por ejemplo,
+-- (impares' n) es la lista de los primeros nÃºmeros impares. Por ejemplo,
 --    impares' 4  ==  [1,3,5,7]
 impares' n = map (\x -> 2*x+1) [0..n-1]
 
