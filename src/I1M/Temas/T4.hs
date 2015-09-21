@@ -1,6 +1,6 @@
 -- I1M 2010-11: tema-4.hs
--- Tema 4: DefiniciÃ³n de funciones.
--- JosÃ© A. Alonso JimÃ©nez <jalonso@us,es>
+-- Tema 4: Definición de funciones.
+-- José A. Alonso Jiménez <jalonso@us,es>
 -- Sevilla, 1 de Octubre de 2010
 -- =====================================================================
 
@@ -22,11 +22,10 @@ import Prelude
            , tail)
 
 -- ---------------------------------------------------------------------
--- Definiciones por composiciÃ³n                                       --
+-- Definiciones por composición                                       --
 -- ---------------------------------------------------------------------
 
--- (isDigit c) se verifica si c es un dÃ­gito. Por ejemplo.
--- 
+-- (isDigit c) se verifica si c es un dígito. Por ejemplo.
 --    isDigit '3'  ==  True
 --    isDigit 'c'  ==  False
 isDigit :: Char -> Bool
@@ -79,27 +78,27 @@ signum' n | n < 0     = -1
           | otherwise = 1
 
 -- ---------------------------------------------------------------------
--- Definiciones con equiparaciÃ³n de patrones                          --
+-- Definiciones con equiparación de patrones                          --
 -- ---------------------------------------------------------------------
 
--- (not x) es la negaciÃ³n de x.
+-- (not x) es la negación de x.
 not :: Bool -> Bool
 not True  =  False
 not False =  True
 
--- (x && y) es la conjunciÃ³n de x e y.
+-- (x && y) es la conjunción de x e y.
 (&&)  :: Bool -> Bool -> Bool
 True  && True  = True
 True  && False = False
 False && True  = False
 False && False = False
 
--- (x &&1 y) es la conjunciÃ³n de x e y.
+-- (x &&1 y) es la conjunción de x e y.
 (&&&) :: Bool -> Bool -> Bool
 True  &&& True =  True
 _     &&& _    =  False
 
--- (x &&&& y) es la conjunciÃ³n de x e y.
+-- (x &&&& y) es la conjunción de x e y.
 (&&&&) :: Bool -> Bool -> Bool
 True  &&&& x =  x
 False &&&& _ =  False
@@ -126,7 +125,7 @@ test2 :: [Char ] -> Bool
 test2 ('a':_) = True
 test2 _       = False
 
--- (null xs) se verifica si xs es la lista vacÃ­a. Por ejemplo,
+-- (null xs) se verifica si xs es la lista vacía. Por ejemplo,
 --    null []     ==  True
 --    null [3,2]  ==  False
 null :: [a] -> Bool
