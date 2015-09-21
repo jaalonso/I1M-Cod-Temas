@@ -21,4 +21,10 @@ Los códigos de los temas son
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T4.hs)
 + Tema 5: [Definiciones de listas por comprensión
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T5.hs)
++ Tema 6: [Funciones recursivas
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T6.hs)
++ Tema 7: [Funciones de orden superior
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T7.hs)
++ Tema 8: [Razonamiento sobre programas
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T8.hs)
 
