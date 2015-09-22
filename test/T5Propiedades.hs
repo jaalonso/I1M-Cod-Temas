@@ -8,7 +8,7 @@ import Test.Tasty.HUnit
 tests :: TestTree
 tests = 
     testGroup "Propiedades del tema 5"
-      [ testGroup "ejemplos"
+      [ testGroup "Ejemplos"
          [ testCase "concat'" $
              concat' [[1,3],[2,5,6],[4,7]] @?= [1,3,2,5,6,4,7]
          , testCase "primeros" $ primeros [(1,3),(2,5),(6,3)]  @?=  [1,2,6]
