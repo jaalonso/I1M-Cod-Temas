@@ -29,4 +29,6 @@ Los códigos de los temas son
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T8.hs)
 + Tema 9: [Declaración de tipos y clases
           ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T9.hs)
++ Tema 10: [Evaluación perezosa
+          ](https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/I1M/Temas/T10.hs)
 
