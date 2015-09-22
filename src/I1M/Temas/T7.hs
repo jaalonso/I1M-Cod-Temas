@@ -1,7 +1,7 @@
--- I1M 2010-11 tema-7.hs
+-- I1M T7.hs
 -- Tema 7: Funciones de orden superior.
 -- José A. Alonso Jiménez <jalonso@us,es>
--- Sevilla, 26 de Julio de 2009 (Revisión del 24 de Noviembre de 2010)
+-- Sevilla, 26 de Julio de 2009 (Revisión del 22-9-15).
 -- =====================================================================
 
 module I1M.Temas.T7 where

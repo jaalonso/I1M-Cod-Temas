@@ -1,7 +1,7 @@
 -- I1M: T5.hs
 -- Tema 5: Definiciones de listas por comprensión
 -- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 5 de Septiembre de 2015
+-- Sevilla, 5 de Septiembre de 2015 (Revisión del 23-9-15)
 -- ---------------------------------------------------------------------
 
 module I1M.Temas.T5 where

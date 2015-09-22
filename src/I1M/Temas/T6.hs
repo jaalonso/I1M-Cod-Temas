@@ -1,7 +1,7 @@
--- I1M 2010-11: tema-6.hs
+-- I1M T6.hs
 -- Tema 6: Funciones recursivas.
 -- José A. Alonso Jiménez <jalonso@us,es>
--- Sevilla, 7 de Noviembre de 2010
+-- Sevilla, 7 de Noviembre de 2010 (Revisión del 22-9-15).
 -- =====================================================================
 
 module I1M.Temas.T6 where

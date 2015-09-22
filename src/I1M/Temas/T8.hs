@@ -1,7 +1,7 @@
--- I1M 2015-16 T8.hs
+-- I1M T8.hs
 -- Tema 8: Razonamiento sobre programas.
 -- José A. Alonso Jiménez <jalonso@us,es>
--- Sevilla, 26 de Julio de 2009 (Revisión del 21 de septiembre de 2015)
+-- Sevilla, 26 de Julio de 2009 (Revisión del 22-9-15)
 -- =====================================================================
 
 module I1M.Temas.T8 where
