@@ -1,7 +1,6 @@
 -- I1M T10.hs
 -- Tema 10: Evaluación perezosa.
 -- José A. Alonso Jiménez <jalonso@us,es>
--- Sevilla, 26 de Julio de 2009 (Revisión del 22-9-15).
 -- =====================================================================
 
 module I1M.Temas.T10 where

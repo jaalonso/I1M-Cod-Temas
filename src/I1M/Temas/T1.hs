@@ -1,7 +1,6 @@
 -- I1M T1.hs
 -- Tema 1: Introducción a la programación funcional.
 -- José A. Alonso Jiménez <jalonso@us,es>
--- Sevilla, 1 de Octubre de 2010 (Revisión del 21 de septiembre de 2015)
 -- =====================================================================
 
 module I1M.Temas.T1 where
