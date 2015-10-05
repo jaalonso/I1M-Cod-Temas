@@ -1,7 +1,6 @@
 -- I1M T4.hs
 -- Tema 4: Definición de funciones.
 -- José A. Alonso Jiménez <jalonso@us,es>
--- Sevilla, 1 de Octubre de 2010 (Revisión del 22-09-15)
 -- =====================================================================
 
 module I1M.Temas.T4 where
