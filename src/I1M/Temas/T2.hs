@@ -1,4 +1,4 @@
--- I1M T1.hs
+-- I1M T2.hs
 -- Tema 2: Introducción a la programación con Haskell
 -- José A. Alonso Jiménez <jalonso@us.es>
 -- =====================================================================
