@@ -26,7 +26,7 @@ library
                      , I1M.Temas.T8
                      , I1M.Temas.T9
                      , I1M.Temas.T10
-  build-depends:       base >=4.8 && <4.9
+  build-depends:       base >=4.8 
                      , QuickCheck >= 2.8
                      , tasty >= 0.8
                      , tasty-quickcheck >= 0.8

@@ -14,9 +14,9 @@ tests =
          , testCase "suma"   $ suma 4          @?= 10
          ]
       , testGroup "propiedades"
-         [ testProperty "P1" prop_doble
+         [ testProperty "P1" prop_doble1
          ]]
 
-prop_doble :: Int -> Int -> Bool
-prop_doble x y = doble (x+y) == (doble x) + (doble y)  
+prop_doble1 :: Int -> Int -> Bool
+prop_doble1 x y = doble (x+y) == (doble x) + (doble y)  
 
