@@ -1,6 +1,6 @@
--- I1M T8.hs
+-- Tema_8.hs
 -- Tema 8: Razonamiento sobre programas.
--- José A. Alonso Jiménez <jalonso@us,es>
+-- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 module Tema_8 where

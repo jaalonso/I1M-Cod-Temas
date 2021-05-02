@@ -1,6 +1,6 @@
--- I1M T6.hs
+-- Tema_6.hs
 -- Tema 6: Funciones recursivas.
--- José A. Alonso Jiménez <jalonso@us,es>
+-- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 module Tema_6 where
@@ -10,7 +10,6 @@ module Tema_6 where
 -- ---------------------------------------------------------------------
 
 import Prelude hiding (product, reverse, length, (++), zip, drop, init)
-import Data.Char
 
 -- ---------------------------------------------------------------------
 -- Recursión numérica                                                 --
@@ -69,8 +68,7 @@ inserta e (x:xs) | e <= x     = e : (x:xs)
 --    ordena_por_insercion [2,4,3,6,3] == [2,3,3,4,6]
 ordena_por_insercion :: Ord a => [a] -> [a]
 ordena_por_insercion []     = []
-ordena_por_insercion (x:xs) =
-    inserta x (ordena_por_insercion xs)
+ordena_por_insercion (x:xs) = inserta x (ordena_por_insercion xs)
 
 -- ---------------------------------------------------------------------
 -- Recursión sobre varios argumentos                                  --
@@ -109,11 +107,10 @@ fibonacci n = fibonacci (n-1) + fibonacci (n-2)
 -- de ordenación rápida. Por ejemplo,
 --    ordena [2,5,4,7]  ==  [2,4,5,7]
 ordena :: (Ord a) => [a] -> [a]
-ordena [] = []
-ordena (x:xs) =
-    (ordena menores) ++ [x] ++ (ordena mayores)
-    where menores = [a | a <- xs, a <= x]
-          mayores = [b | b <- xs, b > x]
+ordena []     = []
+ordena (x:xs) = ordena menores ++ [x] ++ ordena mayores
+  where menores = [a | a <- xs, a <= x]
+        mayores = [b | b <- xs, b > x]
 
 -- ---------------------------------------------------------------------
 -- Recursión mutua                                                    --
@@ -152,3 +149,4 @@ impares (_:xs) = pares xs
 init :: [a] -> [a]
 init [_]    = []
 init (x:xs) = x : init xs
+init []     = error "Lista vacía"

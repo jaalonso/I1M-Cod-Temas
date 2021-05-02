@@ -1,6 +1,6 @@
--- I1M T7.hs
+-- Tema_7.hs
 -- Tema 7: Funciones de orden superior.
--- José A. Alonso Jiménez <jalonso@us,es>
+-- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 module Tema_7 where

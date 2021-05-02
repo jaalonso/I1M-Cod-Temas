@@ -1,6 +1,6 @@
--- I1M T9.hs
+-- Tema_9.hs
 -- Tema 9: Declaración de tipos y clases.
--- José A. Alonso Jiménez <jalonso@us,es>
+-- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 module Tema_9 where

@@ -1,6 +1,6 @@
--- I1M T10.hs
+-- Tema_10.hs
 -- Tema 10: Evaluación perezosa.
--- José A. Alonso Jiménez <jalonso@us,es>
+-- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 module Tema_10 where
