@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f65c5259a70e6aec0961399000f35681c72b05010a8fd906b3f0e0237f9ab841
+-- hash: 74e81de11548b4ebe35e0fabba72fd5f395fa27a6737fff00ed5a3295389eb63
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -30,6 +30,7 @@ library
   exposed-modules:
       Tema_1
       Tema_10
+      Tema_11
       Tema_2
       Tema_3
       Tema_4
@@ -63,6 +64,7 @@ test-suite spec
   main-is: Spec.hs
   other-modules:
       Tema_10_Spec
+      Tema_11_Spec
       Tema_1_Spec
       Tema_2_Spec
       Tema_3_Spec

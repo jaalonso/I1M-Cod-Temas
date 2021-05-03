@@ -18,3 +18,4 @@ Los códigos de los temas son
 + Tema 8:  [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_8.hs][Razonamiento sobre programas]].
 + Tema 9:  [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_9.hs][Declaración de tipos y clases]].
 + Tema 10: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_10.hs ][Evaluación perezosa]].
++ Tema 11: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_11.hs ][Aplicaciones de programación funcional]].
