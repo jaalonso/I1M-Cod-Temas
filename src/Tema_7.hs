@@ -51,7 +51,7 @@ prop_sum_map :: [Int] -> Bool
 prop_sum_map xs = sum (map (2*) xs) == 2 * sum xs
 
 -- Comprobación con QuickCheck:
---    ghci> quickCheck prop_sum_map
+--    λ> quickCheck prop_sum_map
 --    +++ OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -88,19 +88,25 @@ sumaCuadradosPares' xs = sum [x^2 | x <- xs, even x]
 -- ---------------------------------------------------------------------
 
 -- Ejemplos de definiciones recursivas sobre listas:
+sum' :: [Integer] -> Integer
 sum' []         = 0
 sum' (x:xs)     = x + sum' xs
 
+product' :: [Integer] -> Integer
 product' []     = 1
 product' (x:xs) = x * product' xs
 
+or' :: [Bool] -> Bool
 or' []          = False
 or' (x:xs)      = x || or' xs
 
+and' :: [Bool] -> Bool
 and' []         = True
 and' (x:xs)     = x && and' xs
 
 -- Definiciones con foldr
+sum'', product'' :: [Integer] -> Integer
+or'', and''      :: [Bool] -> Bool
 sum''     = foldr (+) 0
 product'' = foldr (*) 1
 or''      = foldr (||) False
@@ -108,21 +114,22 @@ and''     = foldr (&&) True
 
 -- Definición del patrón foldr
 foldr :: (a -> b -> b) -> b -> [a] -> b
-foldr f v []     =  v
+foldr _ v []     =  v
 foldr f v (x:xs) =  f x (foldr f v xs)
 
 -- (longitud xs) es el número de elementos de xs Por ejemplo,
--- Pdte
+--    longitud [4,2,5]  ==  3
 longitud :: [a] -> Int
 longitud = foldr (\_ n -> 1+n) 0
 
 -- (inversa xs) es la inversa de la lista xs. Por ejemplo,
--- Pdte
+--    inversa [4,2,5]  ==  [5,2,4]
 inversa :: [a] -> [a]
 inversa = foldr (\x xs -> xs ++ [x]) []
 
 -- (conc xs ys) es la conctenación de las listas xs es ys. Por ejemplo,
--- Pdte
+--    conc [4,2,5] [7,9]  ==  [4,2,5,7,9]
+conc :: [a] -> [a] -> [a]
 conc xs ys = (foldr (:) ys) xs
 
 -- ---------------------------------------------------------------------
@@ -133,10 +140,12 @@ conc xs ys = (foldr (:) ys) xs
 --    suma [2,3,7]  ==  12
 suma :: [Integer] -> Integer
 suma = sumaAux 0
-    where sumaAux v []     = v
-          sumaAux v (x:xs) = sumaAux (v+x) xs
+  where sumaAux v []     = v
+        sumaAux v (x:xs) = sumaAux (v+x) xs
 
 -- Definiciones con foldl:
+suma3, product3 :: [Integer] -> Integer
+or3, and3      :: [Bool] -> Bool
 suma3    = foldl (+) 0
 product3 = foldl (*) 1
 or3      = foldl (||) False
@@ -144,7 +153,7 @@ and3     = foldl (&&) True
 
 -- Definición de foldl:
 foldl :: (a -> b -> a) -> a -> [b ] -> a
-foldl f v []     =  v
+foldl _ v []     =  v
 foldl f v (x:xs) =  foldl f (f v x ) xs
 
 -- ---------------------------------------------------------------------
@@ -156,11 +165,17 @@ foldl f v (x:xs) =  foldl f (f v x ) xs
 f . g  = \x -> f (g x)
 
 -- Definiciones sin composición:
+parSC                :: Integer -> Bool
+dosVecesSC           :: (a -> a) -> a -> a
+sumaCuadradosParesSC :: [Integer] -> Integer
 parSC n                 = not (odd n)
-doVecesSC f x           = f (f x)
+dosVecesSC f x          = f (f x)
 sumaCuadradosParesSC ns = sum (map (^2) (filter even ns))
 
 -- Definiciones con composición:
+parCC                :: Integer -> Bool
+dosVecesCC           :: (a -> a) -> a -> a
+sumaCuadradosParesCC :: [Integer] -> Integer
 parCC                = not . odd
 dosVecesCC f         = f . f
 sumaCuadradosParesCC = sum . map (^2) . filter even
@@ -198,11 +213,13 @@ bin2int :: [Bit] -> Int
 bin2int =  foldr (\x y -> x + 2*y) 0
 
 -- Puede definirse por recursión
+--    bin2intR [1,0,1,1]  ==  13
 bin2intR :: [Bit] -> Int
 bin2intR [] = 0
 bin2intR (x:xs) = x + 2 * (bin2intR xs)
 
 -- Puede definirse por comprensión
+--    bin2intC [1,0,1,1]  ==  13
 bin2intC :: [Bit] -> Int
 bin2intC xs = sum [x*2^n | (x,n) <- zip xs [0..]]
 
@@ -217,8 +234,8 @@ int2bin n | n < 2     = [n]
 -- resultado a decimal con bin2int se obtiene el número inicial.
 prop_int_bin :: Int -> Bool
 prop_int_bin x =
-    bin2int (int2bin y) == y
-    where y = abs x
+  bin2int (int2bin y) == y
+  where y = abs x
 
 -- Comprobación:
 --    > quickCheck prop_int_bin
@@ -236,9 +253,11 @@ prop_int_bin x =
 --    creaOcteto [1,0,1,1,0,0,1,1,1,0,0,0]  ==  [1,0,1,1,0,0,1,1]
 --    creaOcteto [1,0,1,1]                  ==  [1,0,1,1,0,0,0,0]
 creaOcteto :: [Bit] -> [Bit]
-creaOcteto bs =  take 8 (bs ++ repeat 0)
+creaOcteto bs = take 8 (bs ++ repeat 0)
 
 -- creaOcteto se puede definir sin usar repeat:
+--    creaOcteto' [1,0,1,1,0,0,1,1,1,0,0,0]  ==  [1,0,1,1,0,0,1,1]
+--    creaOcteto' [1,0,1,1]                  ==  [1,0,1,1,0,0,0,0]
 creaOcteto' :: [Bit] -> [Bit]
 creaOcteto' bs =  take 8 (bs ++ replicate 8 0)
 
@@ -246,23 +265,22 @@ creaOcteto' bs =  take 8 (bs ++ replicate 8 0)
 -- obtenida convirtiendo cada carácter en un número Unicode,
 -- convirtiendo cada uno de dichos números en un octeto y concatenando
 -- los octetos para obtener una lista de bits. Por ejemplo,
---    ghci> codifica "abc"
+--    λ> codifica "abc"
 --    [1,0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,1,1,0,0,0,1,1,0]
 codifica :: String -> [Bit]
 codifica =  concat . map (creaOcteto . int2bin . ord)
 
 -- (separaOctetos bs) es la lista obtenida separando la lista de bits bs
 -- en listas de 8 elementos. Por ejemplo,
---    ghci> separaOctetos [1,0,0,0,0,1,1,0,0,1,0,0,0,1,1,0]
+--    λ> separaOctetos [1,0,0,0,0,1,1,0,0,1,0,0,0,1,1,0]
 --    [[1,0,0,0,0,1,1,0],[0,1,0,0,0,1,1,0]]
 separaOctetos :: [Bit] -> [[Bit]]
 separaOctetos [] = []
-separaOctetos bs =
-    take 8 bs : separaOctetos (drop 8 bs)
+separaOctetos bs = take 8 bs : separaOctetos (drop 8 bs)
 
 -- (descodifica bs) es la cadena correspondiente a la lista de bits
 -- bs. Por ejemplo,
---    ghci> descodifica [1,0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,1,1,0,0,0,1,1,0]
+--    λ> descodifica [1,0,0,0,0,1,1,0,0,1,0,0,0,1,1,0,1,1,0,0,0,1,1,0]
 --    "abc"
 descodifica :: [Bit] -> String
 descodifica =  map (chr . bin2int) . separaOctetos
@@ -272,17 +290,30 @@ descodifica =  map (chr . bin2int) . separaOctetos
 
 -- (transmite c t) es la cadena obtenida transmitiendo la cadena t a
 -- través del canal c. Por ejemplo,
---    ghci> transmite id "Texto por canal correcto"
+--    λ> transmite id "Texto por canal correcto"
 --    "Texto por canal correcto"
 transmite :: ([Bit] -> [Bit]) -> String -> String
 transmite canal =  descodifica . canal . codifica
 
 -- Propiedad: Al trasmitir cualquier cadena por el canal identidad se
 -- obtiene la cadena.
-prop_transmite :: String -> Bool
-prop_transmite cs =
-    transmite id cs == cs
+prop_transmite :: ASCIIString -> Bool
+prop_transmite (ASCIIString cs) =
+  transmite id cs == cs
 
 -- Comprobación de la corrección:
---    ghci> quickCheck prop_transmite
+--    λ> quickCheck prop_transmite
 --    +++ OK, passed 100 tests.
+
+-- ---------------------------------------------------------------------
+-- § Verificación de propiedades                                      --
+-- ---------------------------------------------------------------------
+
+-- Las propiedades son
+verifica_Tema_7 :: IO ()
+verifica_Tema_7 =
+  sequence_ [quickCheck prop_sum_map,
+             quickCheck prop_int_bin,
+             quickCheck prop_transmite]
+
+-- Su verificación es

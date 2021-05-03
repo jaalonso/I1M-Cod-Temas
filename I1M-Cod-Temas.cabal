@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 85b9d110893162cafaeb9e726c52e54a33496efe17802142b599e3e6f49f061f
+-- hash: 712269cdc9e2c88a14f48014fa06335d705e78facd4af3507c933037f7cae0e2
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -68,6 +68,7 @@ test-suite spec
       Tema_4_Spec
       Tema_5_Spec
       Tema_6_Spec
+      Tema_7_Spec
       Paths_I1M_Cod_Temas
   hs-source-dirs:
       test
