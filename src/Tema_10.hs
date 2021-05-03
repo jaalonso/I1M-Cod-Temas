@@ -5,14 +5,17 @@
 
 module Tema_10 where
 
+import Data.List (foldl')
+
 -- inf representa el infinito.
 inf :: Int
 inf = 1 + inf
 
 -- Evaluaciones con infinito:
---    fst (0,inf)  =>  0
+--    fst (0,inf)  ==  0
 
--- (cuadrado n) es el cuadrado de n.
+-- (cuadrado n) es el cuadrado de n. Por ejemplo,
+--    cuadrado 3  ==  9
 cuadrado :: Int -> Int
 cuadrado n = n * n
 
@@ -35,31 +38,13 @@ primos = criba [2..]
 
 criba :: [Int] -> [Int]
 criba (p:xs) = p : criba [x | x <- xs, x `mod` p /= 0]
-
---   primos
--- = criba [2..]
--- = criba (2 : [3..])
--- = 2 : (criba [x | x <- [3..],
---                   x `mod` 2 /= 0])
--- = 2 : (criba (3 : [x | x <- [4..],
---                        x `mod` 2 /= 0]))
--- = 2 : 3 : (criba [x | x <- [4..],
---                       x `mod` 2 /= 0,
---                       x `mod` 3 /= 0])
--- = 2 : 3 : (criba (5 : [x | x <- [6..],
---                            x `mod` 2 /= 0,
---                            x `mod` 3 /= 0])
--- = 2 : 3 : 5 : (criba ([x | x <- [6..],
---                            x `mod` 2 /= 0,
---                            x `mod` 3 /= 0,
---                            x `mod` 5 /= 0])
--- = ...
+criba []     = error "Imposible"
 
 -- (sumaAcu v xs) es la suma de v y los elementos de xs, usando
 -- acumulador. Por ejemplo,
---    ghci> sumaAcu 3 [4,7,2]
+--    λ> sumaAcu 3 [4,7,2]
 --    16
---    ghci> sumaAcu 0 [1..1000000]
+--    λ> sumaAcu 0 [1..1000000]
 --    *** Exception: stack overflow
 sumaAcu :: Integer -> [Integer] -> Integer
 sumaAcu v []     = v
@@ -67,23 +52,15 @@ sumaAcu v (x:xs) = sumaAcu (v+x) xs
 
 -- (sumaAcu' v xs) es la suma de v y los elementos de xs, usando
 -- acumulador y evaluación impaciente. Por ejemplo,
---    ghci> sumaAcu' 3 [4,7,2]
---    16
---    ghci> sumaAcu' 0 [1..1000000]
---    1784293664
+--    sumaAcu' 3 [4,7,2]       ==  16
+--    sumaAcu' 0 [1..1000000]  ==  500000500000
 sumaAcu' :: Integer -> [Integer] -> Integer
 sumaAcu' v []     = v
 sumaAcu' v (x:xs) = (sumaAcu' $! (v+x)) xs
 
--- Versión estricta de foldl en el Preludio:
-foldl' :: (a -> b -> a) -> a -> [b] -> a
-foldl' f a []     = a
-foldl' f a (x:xs) = (foldl' f $! f a x) xs
-
 -- (sumaAcu' v xs) es la suma de v y los elementos de xs, usando
 -- foldl'. Por ejemplo,
---    ghci> sumaAcu' 3 [4,7,2]
---    16
---    ghci> sumaAcu'' 0 [1..10000]
---    50005000
+--    sumaAcu' 3 [4,7,2]      ==  16
+--    sumaAcu'' 0 [1..10000]  ==  50005000
+sumaAcu'' :: Integer -> [Integer] -> Integer
 sumaAcu'' = foldl' (+)
