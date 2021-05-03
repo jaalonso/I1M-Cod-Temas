@@ -317,3 +317,7 @@ verifica_Tema_7 =
              quickCheck prop_transmite]
 
 -- Su verificación es
+--    λ> verifica_Tema_7
+--    +++ OK, passed 100 tests.
+--    +++ OK, passed 100 tests.
+--    +++ OK, passed 100 tests.
