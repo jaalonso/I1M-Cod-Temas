@@ -11,55 +11,68 @@ import Data.List (nub)
 -- Declaraciones de tipos                                             --
 -- ---------------------------------------------------------------------
 
--- Las posiciones son listas de números enteros.
+-- Las posiciones son pares de números enteros.
 type Pos = (Int,Int)
 
--- La listas de asociación son listas de pares formados por una clave y
--- un valor.
-type Asoc c v = [(c,v)]
+-- (izquierda p)~ es la posición a la izquierda de la posición p. Por
+-- ejemplo,
+--    izquierda (3,5)  ==  (2,5)
+izquierda :: Pos -> Pos
+izquierda (x,y) = (x-1,y)
 
--- busca 2 [(1,'a'),(3,'d'),(2,'c')]  ==  'c'
-busca :: Eq c => c -> Asoc c v -> v
-busca c t = head [v | (c',v) <- t, c == c']
+-- (Par a) es el tipo de pares de elementos de tipo a:
+type Par a = (a,a)
+
+-- (multiplica p) es el producto del par de enteros p. Por ejemplo,
+--     multiplica (2,5)  ==  10
+multiplica :: Par Int -> Int
+multiplica (x,y) = x*y
+
+-- (copia x) es el par formado con dos copias de x. Por ejemplo,
+--    copia 5  ==  (5,5)
+copia :: a -> Par a
+copia x = (x,x)
 
 -- ---------------------------------------------------------------------
 -- Declaraciones de datos                                             --
 -- ---------------------------------------------------------------------
 
-data Movimento = Izquierda | Derecha | Arriba | Abajo
+-- Definición del tipo de movimientos:
+data Mov = Izquierda | Derecha | Arriba | Abajo
 
--- (mueve m p) es la posición resultante de realizar el movimiento m en
+-- (movimiento m p) es la posición resultante de realizar el movimiento m en
 -- la posición p. Por ejemplo,
---    mueve Izquierda (2,3)  ==  (1,3)
---    mueve Derecha   (2,3)  ==  (3,3)
---    mueve Arriba    (2,3)  ==  (2,4)
---    mueve Abajo     (2,3)  ==  (2,2)
-mueve :: Movimento -> Pos -> Pos
-mueve Izquierda (x,y) = (x-1,y)
-mueve Derecha   (x,y) = (x+1,y)
-mueve Arriba    (x,y) = (x,y+1)
-mueve Abajo     (x,y) = (x,y-1)
+--    movimiento Izquierda (2,3)  ==  (1,3)
+--    movimiento Derecha   (2,3)  ==  (3,3)
+--    movimiento Arriba    (2,3)  ==  (2,4)
+--    movimiento Abajo     (2,3)  ==  (2,2)
+movimiento :: Mov -> Pos -> Pos
+movimiento Izquierda (x,y) = (x-1,y)
+movimiento Derecha   (x,y) = (x+1,y)
+movimiento Arriba    (x,y) = (x,y+1)
+movimiento Abajo     (x,y) = (x,y-1)
 
--- (mueven ms p) es la posición resultante de realizar los movimientos
+-- (movimientos ms p) es la posición resultante de realizar los movimientos
 -- de la lista de mocimientos ms en la posición p. Por ejemplo,
---    mueven [Izquierda, Arriba] (2,3)  ==  (1,4)
-mueven :: [Movimento] -> Pos -> Pos
-mueven [] p     = p
-mueven (m:ms) p = mueven ms (mueve m p)
+--    movimientos [Izquierda, Arriba] (2,3)  ==  (1,4)
+movimientos :: [Mov] -> Pos -> Pos
+movimientos [] p     = p
+movimientos (m:ms) p = movimientos ms (movimiento m p)
 
--- (inverso m) es el movimiento inverso de m.
-inverso :: Movimento -> Movimento
-inverso Izquierda = Derecha
-inverso Derecha   = Izquierda
-inverso Arriba    = Abajo
-inverso Abajo     = Arriba
+-- (opuesto m) es el movimiento opuesto de m.
+opuesto :: Mov -> Mov
+opuesto Izquierda = Derecha
+opuesto Derecha   = Izquierda
+opuesto Arriba    = Abajo
+opuesto Abajo     = Arriba
 
+-- Una figura es un círculo con su radio o un rectángulo son su base y
+-- su altura.
 data Figura = Circulo Float | Rect Float Float
+  deriving (Eq, Show)
 
---    :t Circulo  =>  Circulo :: Float -> Figura
---    :t Rect  =>  Rect :: Float -> Float -> Figura
-
--- (cuadrado n) es el cuadrado de lado n.
+-- (cuadrado n) es el cuadrado de lado n. Por ejemplo,
+--    cuadrado 3  ==  Rect 3 3
 cuadrado :: Float -> Figura
 cuadrado n = Rect n n
 
@@ -67,11 +80,10 @@ cuadrado n = Rect n n
 --    area (Circulo 1)  ==  3.1415927
 --    area (Circulo 2)  ==  12.566371
 --    area (Rect 2 5)   ==  10.0
+--    area (cuadrado 3) ==   9
 area :: Figura -> Float
 area (Circulo r) = pi*r^2
 area (Rect x y)  = x*y
-
--- data Maybe a = Nothing | Just a
 
 -- (divisionSegura m n) es la división de m entre n si n no es cero y
 -- fallo en caso contrario. Por ejemplo,
@@ -93,8 +105,9 @@ headSegura xs = Just (head xs)
 -- Tipos recursivos                                                   --
 -- ---------------------------------------------------------------------
 
+-- Los naturales se construyen con el cero y la función sucesor.
 data Nat = Cero | Suc Nat
-           deriving Show
+  deriving (Eq, Show)
 
 -- (nat2int n) es el número entero correspondiente al número natural
 -- n. Por ejemplo,
@@ -128,6 +141,14 @@ longitud (Cons _ xs) = 1 + longitud xs
 -- Arbol es el tipo de los árboles binarios sobre los enteros.
 data Arbol = Hoja Int | Nodo Arbol Int Arbol
 
+-- El árbol binario
+--         5
+--        / \
+--       /   \
+--      3     7
+--     / \   / \
+--    1   4 6   9
+-- se define por
 ejArbol :: Arbol
 ejArbol = Nodo (Nodo (Hoja 1)
                      3
@@ -167,7 +188,7 @@ ocurreEnArbolOrdenado m (Nodo i n d)
 -- data Arbol a   = Nodo a [Arbol a]
 
 -- ---------------------------------------------------------------------
--- Determinador de tautologías                                        --
+-- Sistema de decisión de tautologías                                 --
 -- ---------------------------------------------------------------------
 
 -- Las fórmulas proposicionales se definen por:
@@ -176,12 +197,12 @@ ocurreEnArbolOrdenado m (Nodo i n d)
 --    * Si F es una fómula proposicional, entonces -F también los es.
 --    * Si F y F son fórmulas proposicionales, entonces (F /\ G) y
 --      (F -> G) también lo son.
-data Prop = Const Bool
-          | Var Char
-          | Neg Prop
-          | Conj Prop Prop
-          | Impl Prop Prop
-          deriving Show
+data FProp = Const Bool
+           | Var Char
+           | Neg FProp
+           | Conj FProp FProp
+           | Impl FProp FProp
+  deriving Show
 
 -- Ejemplos de representación de fórmulas proposicionales: Las fórmulas
 --    * p1 := A /\ -A
@@ -189,7 +210,7 @@ data Prop = Const Bool
 --    * p3 := A -> (A /\ B)
 --    * p4 := (A -> (A -> B)) -> B
 -- se representan por
-p1, p2, p3, p4 :: Prop
+p1, p2, p3, p4 :: FProp
 p1 = Conj (Var 'A') (Neg (Var 'A'))
 p2 = Impl (Conj (Var 'A') (Var 'B')) (Var 'A')
 p3 = Impl (Var 'A') (Conj (Var 'A') (Var 'B'))
@@ -197,23 +218,29 @@ p4 = Impl (Conj (Var 'A') (Impl (Var 'A') (Var 'B'))) (Var 'B')
 
 -- Las interpretaciones son listas formadas por el nombre de una
 -- variable proposicional y un valor de verdad.
-type Interpretacion = Asoc Char Bool
+type Interpretacion = [(Char, Bool)]
 
 -- (valor i p) es el valor de la proposición p en la interpretación
 -- i. Por ejemplo,
 --    valor [('A',False),('B',True)] p3  ==  True
 --    valor [('A',True),('B',False)] p3  ==  False
-valor :: Interpretacion -> Prop -> Bool
+valor :: Interpretacion -> FProp -> Bool
 valor _ (Const b)  = b
 valor i (Var x)    = busca x i
 valor i (Neg p)    = not (valor i p)
 valor i (Conj p q) = valor i p && valor i q
 valor i (Impl p q) = valor i p <= valor i q
 
+-- (busca c t) es el valor del primer par de t cuya clave es igual a
+-- c. Por ejemplo,
+--    busca 2 [(1,'a'),(3,'d'),(2,'c')]  ==  'c'
+busca :: Eq c => c -> [(c,v)] -> v
+busca c t = head [v | (c',v) <- t, c == c']
+
 -- (variables p) es la lista de los nombres de las variables de la
 -- fórmula p. Por ejemplo,
 --    variables p3  ==  "AAB"
-variables :: Prop -> [Char]
+variables :: FProp -> [Char]
 variables (Const _)  = []
 variables (Var x)    = [x]
 variables (Neg p)    = variables p
@@ -222,7 +249,7 @@ variables (Impl p q) = variables p ++ variables q
 
 -- (interpretacionesVar n) es la lista de las interpretaciones con n
 -- variables. Por ejemplo,
---    *Main> interpretacionesVar 2
+--    λ> interpretacionesVar 2
 --    [[False,False],
 --     [False,True],
 --     [True,False],
@@ -230,26 +257,26 @@ variables (Impl p q) = variables p ++ variables q
 interpretacionesVar :: Int -> [[Bool]]
 interpretacionesVar 0 = [[]]
 interpretacionesVar n = map (False:) bss ++ map (True:) bss
-    where bss = interpretacionesVar (n-1)
+  where bss = interpretacionesVar (n-1)
 
 -- (interpretaciones p) es la lista de las interpretaciones de la
 -- fórmula p. Por ejemplo,
---    *Main> interpretaciones p3
+--    λ> interpretaciones p3
 --    [[('A',False),('B',False)],
 --     [('A',False),('B',True)],
 --     [('A',True),('B',False)],
 --     [('A',True),('B',True)]]
-interpretaciones :: Prop -> [Interpretacion]
+interpretaciones :: FProp -> [Interpretacion]
 interpretaciones p =
-    map (zip vs) (interpretacionesVar (length vs))
-    where vs = nub (variables p)
+  map (zip vs) (interpretacionesVar (length vs))
+  where vs = nub (variables p)
 
 -- Una definición alternativa es
-interpretaciones' :: Prop -> [Interpretacion]
+interpretaciones' :: FProp -> [Interpretacion]
 interpretaciones' p =
-    [zip vs i | i <- is]
-    where vs = nub (variables p)
-          is = (interpretacionesVar (length vs))
+  [zip vs i | i <- is]
+  where vs = nub (variables p)
+        is = (interpretacionesVar (length vs))
 
 -- (esTautologia p) se verifica si la fórmula p es una tautología. Por
 -- ejemplo,
@@ -257,11 +284,11 @@ interpretaciones' p =
 --    esTautologia p2  ==  True
 --    esTautologia p3  ==  False
 --    esTautologia p4  ==  True
-esTautologia :: Prop -> Bool
+esTautologia :: FProp -> Bool
 esTautologia p = and [valor i p | i <- interpretaciones p]
 
 -- ---------------------------------------------------------------------
--- Máquina abstracta                                                  --
+-- Máquina abstracta de cálculo aritmético                            --
 -- ---------------------------------------------------------------------
 
 -- Una expresión es un número entero o la suma de dos expresiones.
@@ -307,93 +334,3 @@ ejec (SUMA n : p) m = ejec p (n+m)
 --    evalua (Suma (Suma (Num 2) (Num 3)) (Num 4))  ==  9
 evalua :: Expr -> Int
 evalua e = eval e []
-
-{-
-Ejemplo de evaluación:
-  eval (Suma (Suma (Num 2) (Num 3)) (Num 4)) []
-= eval (Suma (Num 2) (Num 3)) [EVAL (Num 4)]
-= eval (Num 2) [EVAL (Num 3), EVAL (Num 4)]
-= ejec [EVAL (Num 3), EVAL (Num 4)] 2
-= eval (Num 3) [SUMA 2, EVAL (Num 4)]
-= ejec [SUMA 2, EVAL (Num 4)] 3
-= ejec [EVAL (Num 4)] (2+3)
-= ejec [EVAL (Num 4)] 5
-= eval (Num 4) [SUMA 5]
-= ejec [SUMA 5] 4
-= ejec [] (5+4)
-= ejec [] 9
-= 9
--}
-
--- ---------------------------------------------------------------------
--- Declaraciones de clases e instancias                               --
--- ---------------------------------------------------------------------
-
--- Declaración de la clase Eq en el Preludio:
---    class Eq a where
---        (==), (/=) :: a -> a -> Bool
---
---        -- Minimal complete definition: (==) or (/=)
---        x == y = not (x/=y)
---        x /= y = not (x==y)
-
--- Declaración de Bool instancia de Eq en el Preludio:
---    instance Eq Bool where
---        False == False = True
---        True  == True  = True
---        _     == _     = False
-
--- Declaración de Ord como superclase de Eq en el Preludio:
---    class (Eq a) => Ord a where
---        compare                :: a -> a -> Ordering
---        (<), (<=), (>=), (>)   :: a -> a -> Bool
---        max, min               :: a -> a -> a
---
---        -- Minimal complete definition: (<=) or compare
---        -- using compare can be more efficient for complex types
---        compare x y | x==y      = EQ
---                    | x<=y      = LT
---                    | otherwise = GT
---
---        x <= y                  = compare x y /= GT
---        x <  y                  = compare x y == LT
---        x >= y                  = compare x y /= LT
---        x >  y                  = compare x y == GT
---
---        max x y   | x <= y      = y
---                  | otherwise   = x
---        min x y   | x <= y      = x
---                  | otherwise   = y
-
--- Declaración de Bool instancia de Ord
--- instance Ord Bool where
---      False <= _     = True
---      True  <= True  = True
---      True  <= False = False
-
--- Clases derivadas
--- ----------------
-
--- Declaración de instancias de Bool mediante derivación.
---    data Bool = False | True
---    	    deriving (Eq, Ord, Read, Show)
-
--- Ejemplos:
---    False == False        ==  True
---    False < True          ==  True
---    show False            ==  "False"
---    read "False" :: Bool  ==  False
-
--- Tipos monádicos.
--- ----------------
-
--- Declaración de la clase de las mónadas en el Preludio:
---    class Monad m where
---        return :: a -> m a
---        (>>=)  :: m a -> (a -> m b) -> m b
---        (>>)   :: m a -> m b -> m b
---        fail   :: String -> m a
---
---        -- Minimal complete definition: (>>=), return
---        p >> q  = p >>= \ _ -> q
---        fail s  = error s
