@@ -19,4 +19,4 @@ Los códigos de los temas son
 + Tema 9:  [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_9.hs][Declaración de tipos y clases]].
 + Tema 10: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_10.hs ][Evaluación perezosa]].
 + Tema 11: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_11.hs ][Aplicaciones de programación funcional]].
-+ tema 12: [[https://github.com/jaalonso/i1m-cod-temas/blob/master/src/Tema_12/Analizador.hs ][Analizadores sintácticos funcionales]].
++ Tema 12: [[https://github.com/jaalonso/i1m-cod-temas/blob/master/src/Tema_12/Analizador.hs ][Analizadores sintácticos funcionales]].
