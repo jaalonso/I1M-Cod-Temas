@@ -24,7 +24,7 @@ factorial n = n * factorial (n-1)
 -- (m `por` n) es el producto de m por n. Por ejemplo,
 --    3 `por` 2  ==  6
 por :: Int -> Int -> Int
-m `por` 0       = 0
+_ `por` 0       = 0
 m `por` n = m + (m `por` (n-1))
 
 -- ---------------------------------------------------------------------
@@ -89,7 +89,7 @@ zip (x:xs) (y:ys) = (x,y) : zip xs ys
 drop :: Int -> [a] -> [a]
 drop 0 xs     = xs
 drop _ []     = []
-drop n (x:xs) = drop (n-1) xs
+drop n (_:xs) = drop (n-1) xs
 
 -- ---------------------------------------------------------------------
 -- Recursión múltiple                                                 --
