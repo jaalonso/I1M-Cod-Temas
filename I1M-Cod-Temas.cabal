@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bb45ac507d61015e6bb4c10f22a61f7763ea184ab00c7962cf21b2f41f47a091
+-- hash: e0a2bc8477b25bfb518d7f16cd865777abdb166ddf239affc9f717a3d438b754
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -41,6 +41,9 @@ library
       Tema_14.PilaConListas
       Tema_14.PilaConTipoDeDatoAlgebraico
       Tema_14.PilaPropiedades
+      Tema_15.ColaConDosListas
+      Tema_15.ColaConListas
+      Tema_15.ColaPropiedades
       Tema_2
       Tema_3
       Tema_4
@@ -79,6 +82,9 @@ test-suite spec
       Tema_14a_Spec
       Tema_14b_Spec
       Tema_14c_Spec
+      Tema_15a_Spec
+      Tema_15b_Spec
+      Tema_15c_Spec
       Tema_1_Spec
       Tema_2_Spec
       Tema_3_Spec

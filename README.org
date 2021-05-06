@@ -29,3 +29,8 @@ Los códigos de los temas son
   + [[./src/Tema_14/PilaConTipoDeDatoAlgebraico.hs][Implementación de las pilas mediante tipos de datos algebraicos]].
   + [[./src/Tema_14/PilaConListas.hs][Implementación de las pilas mediante listas]].
   + [[./src/Tema_14/PilaPropiedades.hs][Propiedades del TAD de las pilas]].
+
++ Tema 15: El tipo abstracto de datos de las colas.
+  + [[./src/Tema_15/ColaConListas.hs][Implementación de las colas mediante listas]].
+  + [[./src/Tema_15/ColaConDosListas.hs][Implementación de las colas mediante pares de listas]].
+  + [[./src/Tema_15/ColaPropiedades.hs][Propiedades del TAD de las colas]].
