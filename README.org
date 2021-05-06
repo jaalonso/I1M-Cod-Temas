@@ -25,3 +25,7 @@ Los códigos de los temas son
   + [[./src/Tema_13/Juego_de_adivinar_el_numero.hs][Juego de adivinar el número]].
   + [[./src/Tema_13/Graficas.hs][Representación gráfica de funciones con gnuplot]].
   + [[./src/Tema_13/Ficheros.hs][Manejo de ficheros]].
++ Tema 14: El tipo abstracto de datos de las pilas.
+  + [[./src/Tema_14/PilaConTipoDeDatoAlgebraico.hs][Implementación de las pilas mediante tipos de datos algebraicos]].
+  + [[./src/Tema_14/PilaConListas.hs][Implementación de las pilas mediante listas]].
+  + [[./src/Tema_14/PilaPropiedades.hs][Propiedades del TAD de las pilas]].

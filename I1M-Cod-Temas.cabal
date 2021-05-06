@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6229a560bf14cb36e7f3308361bb39106ccfb8fd53254a18caee99690f39db93
+-- hash: bb45ac507d61015e6bb4c10f22a61f7763ea184ab00c7962cf21b2f41f47a091
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -38,6 +38,9 @@ library
       Tema_13.Graficas
       Tema_13.Juego_de_adivinar_el_numero
       Tema_13.Vida
+      Tema_14.PilaConListas
+      Tema_14.PilaConTipoDeDatoAlgebraico
+      Tema_14.PilaPropiedades
       Tema_2
       Tema_3
       Tema_4
@@ -73,6 +76,9 @@ test-suite spec
       Tema_10_Spec
       Tema_11_Spec
       Tema_12_Spec
+      Tema_14a_Spec
+      Tema_14b_Spec
+      Tema_14c_Spec
       Tema_1_Spec
       Tema_2_Spec
       Tema_3_Spec
