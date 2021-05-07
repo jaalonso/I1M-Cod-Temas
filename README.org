@@ -34,3 +34,7 @@ Los códigos de los temas son
   + [[./src/Tema_15/ColaConListas.hs][Implementación de las colas mediante listas]].
   + [[./src/Tema_15/ColaConDosListas.hs][Implementación de las colas mediante pares de listas]].
   + [[./src/Tema_15/ColaPropiedades.hs][Propiedades del TAD de las colas]].
+
++ Tema 16: El tipo abstracto de datos de las colas de prioridad.
+  + [[./src/Tema_16/ColaDePrioridadConListas.hs][Implementación de las colas de prioridad como listas]].
+  + [[./src/Tema_16/ColaDePrioridadPropiedades][Propiedades del TAD de las colas de prioridad]].
