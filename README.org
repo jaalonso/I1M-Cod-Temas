@@ -38,3 +38,9 @@ Los códigos de los temas son
 + Tema 16: El tipo abstracto de datos de las colas de prioridad.
   + [[./src/Tema_16/ColaDePrioridadConListas.hs][Implementación de las colas de prioridad como listas]].
   + [[./src/Tema_16/ColaDePrioridadPropiedades][Propiedades del TAD de las colas de prioridad]].
+
++ Tema 17: El tipo abstracto de datos de los conjuntos.
+  + [[./src/Tema_17/ConjuntoConListasNoOrdenadasConDuplicados.hs][Implementación de los conjuntos como listas no ordenadas con elementos duplicados]].
+  + [[./src/Tema_17/ConjuntoConListasNoOrdenadasSinDuplicados.hs][Implementación de los conjuntos como listas no ordenadas sin elementos duplicados]].
+  + [[./src/Tema_17/ConjuntoConListasOrdenadasSinDuplicados.hs][Implementación de los conjuntos como listas ordenadas sin elementos duplicados]].
+  + [[./src/Tema_17/ConjuntoPropiedades.hs][Propiedades del TAD de los conjuntos]].
