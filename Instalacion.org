@@ -1,0 +1,22 @@
+#+TITLE: Instalación de los códigos de los Temas de I1M
+
++ Descargar el [[https://github.com/jaalonso/I1M-Cod-Temas][repositorio con los códigos de los Temas de I1M]]. Por ejemplo con
+  : wget https://github.com/jaalonso/I1M-Cod-Temas/archive/master.zip
+
++ Descomprimirlo y borrarlo, por ejemplo con
+  : unzip master.zip ; rm master.zip
+  Se crea el directorio ~I1M-Cod-Temas-master~).
+
++ Cambiar al directorio ~I1M-Cod-Temas-master~. Por ejemplo,
+  : cd I1M-Cod-Temas-master
+
++ Instalar (o actualizar) [[https://docs.haskellstack.org/en/stable/README/][The Haskell Tool Stack]] siguiendo las
+  [[https://docs.haskellstack.org/en/stable/README/#how-to-install][instrucciones de instalación]]. Por ejemplo,
+  : sudo wget -qO- https://get.haskellstack.org/ | sh
+  Se instala la versión 2.7.1 de stack como se puede comprobar con
+  : stack --version
+  En el caso de tener instalada alguna versión de stack, se puede actualizar con
+  : stack upgrade
+
++ Construir el proyecto con
+  : stack build
