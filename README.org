@@ -1,11 +1,7 @@
 En este repositorio se encuentra el código en Haskell de los temas del curso de
 [[https://jaalonso.github.io/cursos/i1m/][Informática de 1º del Grado en Matemáticas]] de la Universidad de Sevilla.
 
-Los pasos para instalar las librerías son:
-+ Descargar el paquete [[https://github.com/jaalonso/I1M-Cod-Temas/archive/master.zip][I1M]].
-+ Descomprimirlo (y se crea el directorio ~I1M-Cod-Temas-master.zip~).
-+ Cambiar al directorio ~I1M-Cod-Temas-master~
-+ Ejecutar ~cabal install I1M-Cod-Temas.cabal~
+Se puede instalar como se explica en la [[./Instalacion.org][Guía de instalación]].
 
 Los códigos de los temas son
 + Tema 1:  [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_1.hs][Introducción a la programación funcional]].
