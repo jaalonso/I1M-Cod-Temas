@@ -16,3 +16,5 @@ cabal.sandbox.config
 .stack-work/
 LEEME1.org
 TAGS
+stack.yaml.lock
+stack.yaml.lock

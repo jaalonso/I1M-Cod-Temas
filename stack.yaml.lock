@@ -5,12 +5,12 @@
 
 packages:
 - completed:
-    hackage: I1M-0.0.3@sha256:ed49ac085f9986c6c116502057d6b1a743282a5ad14266433af743353806f8ce,2279
+    hackage: I1M-0.1.0@sha256:1b3afb2863632473de430f3924b0630a4e690a7d3786d09ceaaac7f9b0cd9afc,2289
     pantry-tree:
-      size: 2062
-      sha256: 675df3a389bb0a4357641489b14284a0929693e2bceb493dc2ad8fbf460af3c5
+      size: 2064
+      sha256: 6c2087fffca87570d69d054c8c42db433a0b7de7f9685422e0def5bb360abda6
   original:
-    hackage: I1M-0.0.3
+    hackage: I1M-0.1.0
 snapshots:
 - completed:
     size: 567241
