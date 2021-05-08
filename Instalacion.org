@@ -20,3 +20,6 @@
 
 + Construir el proyecto con
   : stack build
+
++ Comprobar los ejemplos con
+  : stack test
