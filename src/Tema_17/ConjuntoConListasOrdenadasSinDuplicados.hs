@@ -25,7 +25,7 @@ escribeConjunto :: Show a => Conj a -> String
 escribeConjunto (Cj [])     = "{}"
 escribeConjunto (Cj [x])    = "{" ++ show x ++ "}"
 escribeConjunto (Cj (x:xs)) = "{" ++ show x ++ aux xs
-  where aux [] = "}"
+  where aux []     = "}"
         aux (y:ys) = "," ++ show y ++ aux ys
 
 -- Procedimiento de escritura de conjuntos.
@@ -76,7 +76,7 @@ inserta x (Cj s) = Cj (agrega x s)
 --    {0,1,2,3,5,7,9}
 elimina :: Ord a => a -> Conj a -> Conj a
 elimina x (Cj s) = Cj (elimina' x s)
-  where elimina' _ []                   = []
+  where elimina' _ []                    = []
         elimina' z s'@(y:ys) | z > y     = y : elimina' z ys
                              | z < y     = s'
                              | otherwise = ys

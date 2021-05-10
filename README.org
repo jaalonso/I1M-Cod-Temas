@@ -40,3 +40,10 @@ Los códigos de los temas son
   + [[./src/Tema_17/ConjuntoConListasNoOrdenadasSinDuplicados.hs][Implementación de los conjuntos como listas no ordenadas sin elementos duplicados]].
   + [[./src/Tema_17/ConjuntoConListasOrdenadasSinDuplicados.hs][Implementación de los conjuntos como listas ordenadas sin elementos duplicados]].
   + [[./src/Tema_17/ConjuntoPropiedades.hs][Propiedades del TAD de los conjuntos]].
+
++ Tema 18: El tipo abstracto de datos de las tablas:
+  + [[./src/Tema_18/El_tipo_array.hs][El tipo array]].
+  + [[./src/Tema_18/TablaConFunciones.hs][Implementación de las tablas como funciones]].
+  + [[./src/Tema_18/TablaConListasDeAsociacion.hs][Implementación de las tablas como listas de asociación]].
+  + [[./src/Tema_18/TablaConMatrices.hs][Implementación de las tablas como matrices]].
+  + [[./src/Tema_18/TablaPropiedades.hs][Propiedades del TAD de las tablas]].

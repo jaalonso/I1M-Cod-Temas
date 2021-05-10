@@ -1,7 +1,12 @@
 #+TITLE: Instalación de los códigos de los Temas de I1M
 
-+ Descargar el [[https://github.com/jaalonso/I1M-Cod-Temas][repositorio con los códigos de los Temas de I1M]]. Por ejemplo con
-  : wget https://github.com/jaalonso/I1M-Cod-Temas/archive/master.zip
+En la siguiente descripción se comenta la instalación en Ubuntu, pero se puede
+aplicar a otros sistemas operativos de manera análoga.
+
++ Descargar el [[https://github.com/jaalonso/I1M-Cod-Temas][repositorio con los códigos de los Temas de I1M]].
+  #+begin_src bash
+wget https://github.com/jaalonso/I1M-Cod-Temas/archive/master.zip
+#+end_src
 
 + Descomprimirlo y borrarlo, por ejemplo con
   : unzip master.zip ; rm master.zip

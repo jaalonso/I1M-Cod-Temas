@@ -106,7 +106,7 @@ prop_elimina_vacio x =
 --    +++ OK, passed 100 tests.
 
 -- Propiedad. El resultado de eliminar x en el conjunto obtenido
--- añadiéndole x al conjunto c es c menos x, si x e y son iguales y es el
+-- añadiéndole y al conjunto c es c menos x, si x e y son iguales y es el
 -- conjunto obtenido añadiéndole y a c menos x, en caso contrario.
 prop_elimina_inserta :: Int -> Int -> Conj Int -> Bool
 prop_elimina_inserta x y c =
