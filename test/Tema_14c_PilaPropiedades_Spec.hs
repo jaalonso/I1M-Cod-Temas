@@ -1,4 +1,4 @@
-module Tema_14c_Spec (main, spec) where
+module Tema_14c_PilaPropiedades_Spec (main, spec) where
 
 import Tema_14.PilaPropiedades
 import Test.Hspec

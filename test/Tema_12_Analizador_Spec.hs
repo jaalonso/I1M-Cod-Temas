@@ -1,4 +1,4 @@
-module Tema_12_Spec (main, spec) where
+module Tema_12_Analizador_Spec (main, spec) where
 
 import Tema_12.Analizador
 import Test.Hspec

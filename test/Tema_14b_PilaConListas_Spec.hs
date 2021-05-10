@@ -1,4 +1,4 @@
-module Tema_14b_Spec (main, spec) where
+module Tema_14b_PilaConListas_Spec (main, spec) where
 
 import Tema_14.PilaConListas
 import Test.Hspec

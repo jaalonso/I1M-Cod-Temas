@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2ef123b01da5b0a72bdc6e858c71b07ef5c66e0fe630e9bdc1609928fb6acf4c
+-- hash: 996a97602dc52b905bdcb89fb1a93d3f57be09d164e8a111eb7777a6e2140528
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -89,20 +89,20 @@ test-suite spec
   other-modules:
       Tema_10_Spec
       Tema_11_Spec
-      Tema_12_Spec
-      Tema_14a_Spec
-      Tema_14b_Spec
-      Tema_14c_Spec
-      Tema_15a_Spec
-      Tema_15b_Spec
-      Tema_15c_Spec
-      Tema_16a_Spec
-      Tema_16b_Spec
-      Tema_17a_Spec
-      Tema_17b_Spec
-      Tema_17c_Spec
-      Tema_17d_Spec
-      Tema_18a_Spec
+      Tema_12_Analizador_Spec
+      Tema_14a_PilaConTipoDeDatoAlgebraico_Spec
+      Tema_14b_PilaConListas_Spec
+      Tema_14c_PilaPropiedades_Spec
+      Tema_15a_ColaConListas_Spec
+      Tema_15b_ColaConDosListas_Spec
+      Tema_15c_ColaPropiedades_Spec
+      Tema_16a_ColaDePrioridadConListas_Spec
+      Tema_16b_ColaDePrioridadPropiedades_Spec
+      Tema_17a_ConjuntoConListasNoOrdenadasConDuplicados_Spec
+      Tema_17b_ConjuntoConListasNoOrdenadasSinDuplicados_Spec
+      Tema_17c_ConjuntoConListasOrdenadasSinDuplicados_Spec
+      Tema_17d_ConjuntoPropiedades_Spec
+      Tema_18a_El_tipo_array_Spec
       Tema_18b_TablaConFunciones_Spec
       Tema_18c_TablaConListasDeAsociacion_Spec
       Tema_18d_TablaConMatrices_Spec

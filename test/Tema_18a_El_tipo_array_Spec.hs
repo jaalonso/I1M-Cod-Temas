@@ -1,4 +1,4 @@
-module Tema_18a_Spec (main, spec) where
+module Tema_18a_El_tipo_array_Spec (main, spec) where
 
 import Tema_18.El_tipo_array
 import Test.Hspec

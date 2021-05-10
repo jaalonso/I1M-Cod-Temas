@@ -1,4 +1,4 @@
-module Tema_17b_Spec (main, spec) where
+module Tema_17b_ConjuntoConListasNoOrdenadasSinDuplicados_Spec (main, spec) where
 
 import Tema_17.ConjuntoConListasNoOrdenadasSinDuplicados
 import Test.Hspec

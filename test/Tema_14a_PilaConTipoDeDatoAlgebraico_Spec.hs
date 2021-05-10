@@ -1,4 +1,4 @@
-module Tema_14a_Spec (main, spec) where
+module Tema_14a_PilaConTipoDeDatoAlgebraico_Spec (main, spec) where
 
 import Tema_14.PilaConTipoDeDatoAlgebraico
 import Test.Hspec

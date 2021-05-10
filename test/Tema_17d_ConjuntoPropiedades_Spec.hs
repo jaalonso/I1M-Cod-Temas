@@ -1,4 +1,4 @@
-module Tema_17d_Spec (main, spec) where
+module Tema_17d_ConjuntoPropiedades_Spec (main, spec) where
 
 import Tema_17.ConjuntoPropiedades
 import Test.Hspec

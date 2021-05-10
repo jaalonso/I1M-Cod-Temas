@@ -1,4 +1,4 @@
-module Tema_16b_Spec (main, spec) where
+module Tema_16b_ColaDePrioridadPropiedades_Spec (main, spec) where
 
 import Tema_16.ColaDePrioridadPropiedades
 import Test.Hspec
