@@ -1,15 +1,19 @@
 -- TablaPropiedades.hs
 -- Propiedades del TAD tablas.
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 29 de Diciembre de 2010
--- ---------------------------------------------------------------------
+-- Tablas mediante matrices.
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
+{-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE FlexibleInstances #-}
-module TablaPropiedades where
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+
+module Tema_18.TablaPropiedades where
 
 -- Nota: Hay que elegir una implementación del TAD tabla:
-import TablaConListasDeAsociacion
--- import TablaConMatrices 
+import Tema_18.TablaConListasDeAsociacion
+-- import Tema_18.TablaConMatrices
+-- import I1M.Tabla
 
 import Test.QuickCheck
 
@@ -18,7 +22,7 @@ import Test.QuickCheck
 -- ---------------------------------------------------------------------
 
 -- genTabla es un generador de tablas. Por ejemplo,
---    ghci> sample genTabla
+--    λ> sample genTabla
 --    Tbl [(1,0)]
 --    Tbl [(1,-1)]
 --    Tbl [(1,0),(2,-1),(3,1),(4,1),(5,0)]
@@ -46,27 +50,26 @@ instance Arbitrary (Tabla Int Int) where
 
 -- Propiedad. Al modificar una tabla dos veces con la misma clave se
 -- obtiene el mismos resultado que modificarla una vez con el último
--- valor. 
+-- valor.
 prop_modifica_modifica_1 :: Int -> Int -> Int -> Tabla Int Int -> Bool
 prop_modifica_modifica_1 i v v' t =
-  modifica (i,v') (modifica (i,v) t) 
-  == modifica (i,v') t 
+  modifica (i,v') (modifica (i,v) t)
+  == modifica (i,v') t
 
 -- Comprobación.
---    ghci> quickCheck prop_modifica_modifica_1
+--    λ> quickCheck prop_modifica_modifica_1
 --    +++ OK, passed 100 tests.
 
 -- Propiedad. Al modificar una tabla con dos pares con claves distintas
--- no importa el orden en que se añadan los pares. 
-prop_modifica_modifica_2 :: Int -> Int -> Int -> Int -> Tabla Int Int 
-                              -> Property
+-- no importa el orden en que se añadan los pares.
+prop_modifica_modifica_2 :: Int -> Int -> Int -> Int -> Tabla Int Int -> Property
 prop_modifica_modifica_2 i i' v v' t =
   i /= i' ==>
-  modifica (i',v') (modifica (i,v) t) 
-  == modifica (i,v) (modifica (i',v') t) 
+  modifica (i',v') (modifica (i,v) t)
+  == modifica (i,v) (modifica (i',v') t)
 
 -- Comprobación.
---    ghci> quickCheck prop_modifica_modifica_2
+--    λ> quickCheck prop_modifica_modifica_2
 --    +++ OK, passed 100 tests.
 
 -- Propiedades de valor
@@ -80,14 +83,13 @@ prop_valor_modifica_1 i v t =
   valor (modifica (i,v) t) i == v
 
 -- Comprobación.
---    ghci> quickCheck prop_valor_modifica_1
+--    λ> quickCheck prop_valor_modifica_1
 --    +++ OK, passed 100 tests.
 
 -- Propiedad. Sean i y i' dos claves distintas. El valor de la clave i'
 -- en la tabla obtenida añadiéndole el par (i,v) a la tabla t' (que
--- contiene la clave i') es el valor de i' en t'. 
-prop_valor_modifica_2 :: Int -> Int -> Int -> Int -> Tabla Int Int 
-                            -> Property
+-- contiene la clave i') es el valor de i' en t'.
+prop_valor_modifica_2 :: Int -> Int -> Int -> Int -> Tabla Int Int -> Property
 prop_valor_modifica_2 i v i' v' t =
   modifica (i',v') t /= t &&
   modifica (i,v) t' /= t' &&
@@ -97,5 +99,30 @@ prop_valor_modifica_2 i v i' v' t =
   where t' = modifica (i',v') t
 
 -- Comprobación.
---    ghci> quickCheck prop_valor_modifica_2
+--    λ> quickCheck prop_valor_modifica_2
 --    +++ OK, passed 100 tests.
+
+-- ---------------------------------------------------------------------
+-- § Verificación                                                     --
+-- ---------------------------------------------------------------------
+
+return []
+
+verificaTablas :: IO Bool
+verificaTablas = $quickCheckAll
+
+-- La verificación es
+--    λ> verificaTablas
+--    === prop_modifica_modifica_1 from TablaPropiedades.hs:54 ===
+--    +++ OK, passed 100 tests.
+--
+--    === prop_modifica_modifica_2 from TablaPropiedades.hs:65 ===
+--    +++ OK, passed 100 tests; 14 discarded.
+--
+--    === prop_valor_modifica_1 from TablaPropiedades.hs:80 ===
+--    +++ OK, passed 100 tests; 1 discarded.
+--
+--    === prop_valor_modifica_2 from TablaPropiedades.hs:92 ===
+--    +++ OK, passed 100 tests; 14 discarded.
+--
+--    True

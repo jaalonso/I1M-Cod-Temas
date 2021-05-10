@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c1c00f9d0cbc490b3bfc9af579b0e224a478f016360afb4b9eacf5ef1b9edf6b
+-- hash: 2ef123b01da5b0a72bdc6e858c71b07ef5c66e0fe630e9bdc1609928fb6acf4c
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -103,6 +103,10 @@ test-suite spec
       Tema_17c_Spec
       Tema_17d_Spec
       Tema_18a_Spec
+      Tema_18b_TablaConFunciones_Spec
+      Tema_18c_TablaConListasDeAsociacion_Spec
+      Tema_18d_TablaConMatrices_Spec
+      Tema_18e_TablaPropiedades_Spec
       Tema_1_Spec
       Tema_2_Spec
       Tema_3_Spec

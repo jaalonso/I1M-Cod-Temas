@@ -18,25 +18,32 @@ instance Show (Tabla i v) where
   showsPrec _ _ = showString "<<Una tabla>>"
 
 -- Ejemplos de tablas:
+--    λ> f x = if x < 3 then x else 3-x
+--    λ> t1 = tabla [(i,f i) | i <- [1..6] ]
 --    λ> t1
 --    <<Una tabla>>
-t1, t2 :: Tabla Int Int
-t1 = tabla [(i,f i) | i <- [1..6] ]
-     where f x | x < 3     = x
-               | otherwise = 3-x
-t2 = tabla [(4,89), (1,90), (2,67)]
 
 -- (valor t i) es el valor del índice i en la tabla t. Por ejemplo,
---    valor t1 6  ==  -3
---    valor t2 2  ==  67
---    valor t2 5  ==  *** Exception: fuera de rango
+--    λ> f x = if x < 3 then x else 3-x
+--    λ> t1 = tabla [(i,f i) | i <- [1..6] ]
+--    λ> valor t1 6
+--    -3
+--    λ> t2 = tabla [(4,89), (1,90), (2,67)]
+--    λ> valor t2 2
+--    67
+--    λ> valor t2 5
+--    *** Exception: fuera de rango
 valor :: Eq i => Tabla i v -> i -> v
 valor (Tbl f) = f
 
 -- (modifica (i,v) t) es la tabla obtenida modificando en la tabla t el
 -- valor de i por v. Por ejemplo,
---    valor t1 6                   ==  -3
---    valor (modifica (6,9) t1) 6  ==  9
+--    λ> f x = if x < 3 then x else 3-x
+--    λ> t1 = tabla [(i,f i) | i <- [1..6] ]
+--    λ> valor t1 6
+--    -3
+--    λ> valor (modifica (6,9) t1) 6
+--    9
 modifica :: Eq i => (i,v) -> Tabla i v -> Tabla i v
 modifica (i,v) (Tbl f) = Tbl g
   where g j | j == i    = v
