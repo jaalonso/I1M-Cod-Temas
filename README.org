@@ -47,3 +47,7 @@ Los códigos de los temas son
   + [[./src/Tema_18/TablaConListasDeAsociacion.hs][Implementación de las tablas como listas de asociación]].
   + [[./src/Tema_18/TablaConMatrices.hs][Implementación de las tablas como matrices]].
   + [[./src/Tema_18/TablaPropiedades.hs][Propiedades del TAD de las tablas]].
+
++ Tema 19: El tipo abstracto de datos de los árboles binarios de búsqueda:
+  + [[./src/Tema_19/ArbolBin.hs][Implementación de los árboles binarios de búsqueda como tipo de dato algebraico]].
+  + [[./src/Tema_19/ArbolBinPropiedades.hs][Propiedades del TAD de los árboles binarios de búsqueda]].

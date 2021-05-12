@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 996a97602dc52b905bdcb89fb1a93d3f57be09d164e8a111eb7777a6e2140528
+-- hash: 8b570e6f81adae53a5b7b96a0143779342fc2d71c606b958d8b898accbfda995
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -55,6 +55,8 @@ library
       Tema_18.TablaConListasDeAsociacion
       Tema_18.TablaConMatrices
       Tema_18.TablaPropiedades
+      Tema_19.ArbolBin
+      Tema_19.ArbolBinPropiedades
       Tema_2
       Tema_3
       Tema_4
@@ -107,6 +109,8 @@ test-suite spec
       Tema_18c_TablaConListasDeAsociacion_Spec
       Tema_18d_TablaConMatrices_Spec
       Tema_18e_TablaPropiedades_Spec
+      Tema_19a_ArbolBin_Spec
+      Tema_19b_ArbolBinPropiedades_Spec
       Tema_1_Spec
       Tema_2_Spec
       Tema_3_Spec
