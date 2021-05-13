@@ -43,8 +43,7 @@ data ABB a = Vacio
            | Nodo a (ABB a) (ABB a)
   deriving Eq
 
--- (escribeABB a) es la cadena correspondiente a la pila a. Por
--- ejemplo,
+-- (escribeABB a) es la cadena correspondiente al ABB a. Por ejemplo,
 --    λ> escribeABB (crea (reverse [5,2,6,4,8,3,9]))
 --    " (5 (2 - (4 (3 - -) -)) (6 - (8 - (9 - -))))"
 --    λ> escribeABB (foldr inserta vacio (reverse [5,2,4,3,8,6,7,10,9,11]))
@@ -53,7 +52,7 @@ escribeABB :: Show a => ABB a -> String
 escribeABB Vacio        = " -"
 escribeABB (Nodo x i d) = " (" ++ show x ++ escribeABB i ++ escribeABB d ++ ")"
 
--- Procedimiento de escritura de pilas.
+-- Procedimiento de escritura de ABB.
 instance Show a => Show (ABB a) where
   show = escribeABB
 
@@ -77,20 +76,17 @@ vacio = Vacio
 -- a. Por ejemplo,
 --   pertenece 3 (ejemploABB 1)  ==  True
 --   pertenece 7 (ejemploABB 1)  ==  False
-pertenece :: (Ord a,Show a) => a -> ABB a -> Bool
+pertenece :: (Ord a, Show a) => a -> ABB a -> Bool
 pertenece _ Vacio         = False
 pertenece v' (Nodo v i d) | v == v'   = True
                           | v' < v    = pertenece v' i
                           | otherwise = pertenece v' d
 
--- pertenece requiere O(n) paso en el peor caso O(n) y O(log n) en el mejor,
--- donde n es el número de nodos del ABB.
-
 -- (inserta v a) es el árbol obtenido añadiendo el valor v al ABB a, si
 -- no es uno de sus valores. Por ejemplo,
 --    λ> inserta 7 (ejemploABB 1)
 --     (5 (2 - (4 (3 - -) -)) (6 - (8 (7 - -) (9 - -))))
-inserta :: (Ord a,Show a) => a -> ABB a -> ABB a
+inserta :: (Ord a, Show a) => a -> ABB a -> ABB a
 inserta v' Vacio        = Nodo v' Vacio Vacio
 inserta v' (Nodo v i d) | v' == v   = Nodo v i d
                         | v' < v    = Nodo v (inserta v' i) d
@@ -99,14 +95,14 @@ inserta v' (Nodo v i d) | v' == v   = Nodo v i d
 -- (crea vs) es el ABB cuyos valores son vs. Por ejemplo,
 --    λ> crea [3,7,2]
 --     (2 - (7 (3 - -) -))
-crea :: (Ord a,Show a) => [a] -> ABB a
+crea :: (Ord a, Show a) => [a] -> ABB a
 crea = foldr inserta Vacio
 
 -- (crea' vs) es el ABB de menor profundidad cuyos valores son los de
 -- la lista ordenada vs. Por ejemplo,
 --    λ> crea' [2,3,7]
 --     (3 (2 - -) (7 - -))
-crea' :: (Ord a,Show a) => [a] -> ABB a
+crea' :: (Ord a, Show a) => [a] -> ABB a
 crea' [] = Vacio
 crea' vs = Nodo x (crea' l1) (crea' l2)
   where n      = length vs `div` 2
@@ -117,7 +113,7 @@ crea' vs = Nodo x (crea' l1) (crea' l2)
 -- recorrido inorden. Por ejemplo,
 --   elementos (ejemploABB 1)  ==  [2,3,4,5,6,8,9]
 --   elementos (ejemploABB 2)  ==  [2,3,4,5,6,7,8,9,10,11]
-elementos :: (Ord a,Show a) => ABB a -> [a]
+elementos :: (Ord a, Show a) => ABB a -> [a]
 elementos Vacio        = []
 elementos (Nodo v i d) = elementos i ++ [v] ++ elementos d
 
@@ -133,7 +129,7 @@ elementos (Nodo v i d) = elementos i ++ [v] ++ elementos d
 --     (6 (2 - (4 (3 - -) -)) (8 - (9 - -)))
 --    λ> elimina 7 (ejemploABB 1)
 --     (5 (2 - (4 (3 - -) -)) (6 - (8 - (9 - -))))
-elimina  :: (Ord a,Show a) => a -> ABB a -> ABB a
+elimina  :: (Ord a, Show a) => a -> ABB a -> ABB a
 elimina _  Vacio = Vacio
 elimina v' (Nodo v i Vacio) | v'==v = i
 elimina v' (Nodo v Vacio d) | v'==v = d

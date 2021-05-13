@@ -25,29 +25,28 @@ Los códigos de los temas son
   + [[./src/Tema_14/PilaConTipoDeDatoAlgebraico.hs][Implementación de las pilas mediante tipos de datos algebraicos]].
   + [[./src/Tema_14/PilaConListas.hs][Implementación de las pilas mediante listas]].
   + [[./src/Tema_14/PilaPropiedades.hs][Propiedades del TAD de las pilas]].
-
 + Tema 15: El tipo abstracto de datos de las colas.
   + [[./src/Tema_15/ColaConListas.hs][Implementación de las colas mediante listas]].
   + [[./src/Tema_15/ColaConDosListas.hs][Implementación de las colas mediante pares de listas]].
   + [[./src/Tema_15/ColaPropiedades.hs][Propiedades del TAD de las colas]].
-
 + Tema 16: El tipo abstracto de datos de las colas de prioridad.
   + [[./src/Tema_16/ColaDePrioridadConListas.hs][Implementación de las colas de prioridad como listas]].
   + [[./src/Tema_16/ColaDePrioridadPropiedades][Propiedades del TAD de las colas de prioridad]].
-
 + Tema 17: El tipo abstracto de datos de los conjuntos.
   + [[./src/Tema_17/ConjuntoConListasNoOrdenadasConDuplicados.hs][Implementación de los conjuntos como listas no ordenadas con elementos duplicados]].
   + [[./src/Tema_17/ConjuntoConListasNoOrdenadasSinDuplicados.hs][Implementación de los conjuntos como listas no ordenadas sin elementos duplicados]].
   + [[./src/Tema_17/ConjuntoConListasOrdenadasSinDuplicados.hs][Implementación de los conjuntos como listas ordenadas sin elementos duplicados]].
   + [[./src/Tema_17/ConjuntoPropiedades.hs][Propiedades del TAD de los conjuntos]].
-
 + Tema 18: El tipo abstracto de datos de las tablas:
   + [[./src/Tema_18/El_tipo_array.hs][El tipo array]].
   + [[./src/Tema_18/TablaConFunciones.hs][Implementación de las tablas como funciones]].
   + [[./src/Tema_18/TablaConListasDeAsociacion.hs][Implementación de las tablas como listas de asociación]].
   + [[./src/Tema_18/TablaConMatrices.hs][Implementación de las tablas como matrices]].
   + [[./src/Tema_18/TablaPropiedades.hs][Propiedades del TAD de las tablas]].
-
 + Tema 19: El tipo abstracto de datos de los árboles binarios de búsqueda:
   + [[./src/Tema_19/ArbolBin.hs][Implementación de los árboles binarios de búsqueda como tipo de dato algebraico]].
   + [[./src/Tema_19/ArbolBinPropiedades.hs][Propiedades del TAD de los árboles binarios de búsqueda]].
++ Tema 20: El tipo abstracto de datos de los montículos:
+  + [[./src/Tema_20/Monticulos.hs][Implementación de los montículos como tipo de dato algebraico]].
+  + [[./src/Tema_20/MonticuloPropiedades.hs][Propiedades del TAD de los montículos]].
+  + [[./src/Tema_20/ColaDePrioridadConMonticulos.hs][Implementación de las colas de prioridad mediante montículos]].

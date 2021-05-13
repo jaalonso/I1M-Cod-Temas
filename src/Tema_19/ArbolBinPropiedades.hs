@@ -10,7 +10,9 @@
 
 module Tema_19.ArbolBinPropiedades where
 
+-- Importación de la implementación de los ABB que se desea verificar.
 import Tema_19.ArbolBin
+-- import I1M.ArbolBin
 
 import Data.List (nub, sort)
 import Test.QuickCheck
