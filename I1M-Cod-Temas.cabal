@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8b570e6f81adae53a5b7b96a0143779342fc2d71c606b958d8b898accbfda995
+-- hash: 646d57b9dcec19cd94ae06b9b46779b0ffc07f954425247e9a99acfcb4197f8c
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -58,6 +58,9 @@ library
       Tema_19.ArbolBin
       Tema_19.ArbolBinPropiedades
       Tema_2
+      Tema_20.ColaDePrioridadConMonticulos
+      Tema_20.Monticulo
+      Tema_20.MonticuloPropiedades
       Tema_3
       Tema_4
       Tema_5
@@ -112,6 +115,8 @@ test-suite spec
       Tema_19a_ArbolBin_Spec
       Tema_19b_ArbolBinPropiedades_Spec
       Tema_1_Spec
+      Tema_20a_Monticulo_Spec
+      Tema_20b_MonticuloPropiedades_spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec
