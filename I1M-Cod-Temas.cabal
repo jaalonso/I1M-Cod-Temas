@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 646d57b9dcec19cd94ae06b9b46779b0ffc07f954425247e9a99acfcb4197f8c
+-- hash: 66a67b641e211141038d9f073b16eca7f723cf143390972cacf1680ddb7946bf
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -117,6 +117,7 @@ test-suite spec
       Tema_1_Spec
       Tema_20a_Monticulo_Spec
       Tema_20b_MonticuloPropiedades_spec
+      Tema_20c_ColaDePrioridadConMonticulos_Spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec
