@@ -1,4 +1,4 @@
-module Tema_19a_ArbolBinPropiedades_Spec (main, spec) where
+module Tema_19b_ArbolBinPropiedades_Spec (main, spec) where
 
 import Tema_19.ArbolBinPropiedades
 import Test.Hspec
