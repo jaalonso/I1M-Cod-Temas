@@ -1,6 +1,5 @@
 -- MonticuloPropiedades.hs
 -- Propiedades del TAD montículos.
--- Tablas mediante matrices.
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
