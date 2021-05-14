@@ -1,6 +1,5 @@
 -- Monticulo.hs
 -- TAD montículo e implementación.
--- Tablas mediante matrices.
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
