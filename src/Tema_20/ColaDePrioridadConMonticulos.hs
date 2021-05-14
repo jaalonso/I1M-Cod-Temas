@@ -23,9 +23,9 @@ newtype CPrioridad a = CP (M.Monticulo a)
 --    λ> foldr inserta vacia [3,1,7,2,9]
 --    CP (M 1 2
 --          (M 2 2
---             (M 9 1 VacioM VacioM)
---             (M 7 1 VacioM VacioM))
---          (M 3 1 VacioM VacioM))
+--             (M 9 1 Vacio Vacio)
+--             (M 7 1 Vacio Vacio))
+--          (M 3 1 Vacio Vacio))
 
 -- vacia es la cola de prioridad vacía. Por ejemplo,
 --    λ> vacia
@@ -37,16 +37,16 @@ vacia = CP M.vacio
 --    λ> (foldr inserta vacia [3,1,7,2,9])
 --    CP (M 1 2
 --          (M 2 2
---             (M 9 1 VacioM VacioM)
---             (M 7 1 VacioM VacioM))
---          (M 3 1 VacioM VacioM))
+--             (M 9 1 Vacio Vacio)
+--             (M 7 1 Vacio Vacio))
+--          (M 3 1 Vacio Vacio))
 --    λ> inserta 5 (foldr inserta vacia [3,1,7,2,9])
 --    CP (M 1 2
 --          (M 2 2
---             (M 9 1 VacioM VacioM)
---             (M 7 1 VacioM VacioM))
+--             (M 9 1 Vacio Vacio)
+--             (M 7 1 Vacio Vacio))
 --          (M 3 1
---             (M 5 1 VacioM VacioM) VacioM))
+--             (M 5 1 Vacio Vacio) Vacio))
 inserta :: Ord a => a -> CPrioridad a -> CPrioridad a
 inserta v (CP c) = CP (M.inserta v c)
 
@@ -58,9 +58,9 @@ primero (CP c) = M.menor c
 -- (resto c) elimina la cabeza de la cola de prioridad c. Por ejemplo,
 --    λ> resto (foldr inserta vacia [3,1,7,2,9])
 --    CP (M 2 2
---          (M 9 1 VacioM VacioM)
+--          (M 9 1 Vacio Vacio)
 --          (M 3 1
---             (M 7 1 VacioM VacioM) VacioM))
+--             (M 7 1 Vacio Vacio) Vacio))
 resto :: Ord a => CPrioridad a -> CPrioridad a
 resto (CP c) = CP (M.resto c)
 
