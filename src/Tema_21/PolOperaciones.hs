@@ -1,19 +1,25 @@
 -- PolOperaciones.hs
 -- Operaciones con polinomios.
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 30 de Mayo de 2010
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
-module PolOperaciones (module Pol, module PolOperaciones) where
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
+
+module Tema_21.PolOperaciones (module Pol,
+                               module Tema_21.PolOperaciones) where
 
 -- ---------------------------------------------------------------------
 -- Importación de librerías                                           --
 -- ---------------------------------------------------------------------
 
 -- Nota: Hay que elegir una implementación del TAD de los polinomios.
-import PolRepTDA as Pol
--- import PolRepDispersa as Pol
--- import PolRepDensa as Pol
+import Tema_21.PolRepTDA as Pol
+-- import Tema_21.PolRepDensa as Pol
+-- import Tema_21.PolRepDispersa as Pol
+-- import I1M.Pol as Pol
 
 import Test.QuickCheck
 
@@ -21,7 +27,7 @@ import Test.QuickCheck
 -- Ejemplos                                                           --
 -- ---------------------------------------------------------------------
 
--- Ejemplos de polinomios con coeficientes enteros:
+-- Ejemplos de polinomios:
 ejPol1, ejPol2, ejPol3, ejTerm :: Polinomio Int
 ejPol1 = consPol 4 3 (consPol 2 (-5) (consPol 0 3 polCero))
 ejPol2 = consPol 5 1 (consPol 2 5 (consPol 1 4 polCero))
@@ -33,7 +39,7 @@ ejTerm = consPol 1 4 polCero
 -- ---------------------------------------------------------------------
 
 -- (genPol n) es un generador de polinomios. Por ejemplo,
---    ghci> sample (genPol 1)
+--    λ> sample (genPol 1)
 --    7*x^9 + 9*x^8 + 10*x^7 + -14*x^5 + -15*x^2 + -10
 --    -4*x^8 + 2*x
 --    -8*x^9 + 4*x^8 + 2*x^6 + 4*x^5 + -6*x^4 + 5*x^2 + -8*x
@@ -51,7 +57,7 @@ genPol _ = do
   n <- choose (0,10)
   b <- arbitrary
   p <- genPol (div n 2)
-  return (consPol n b p) 
+  return (consPol n b p)
 
 instance (Arbitrary a, Num a, Eq a) => Arbitrary (Polinomio a) where
   arbitrary = sized genPol
@@ -60,7 +66,7 @@ instance (Arbitrary a, Num a, Eq a) => Arbitrary (Polinomio a) where
 -- Funciones sobre términos                                           --
 -- ---------------------------------------------------------------------
 
--- (creaTermino n a) es el término a*x^n. Por ejemplo, 
+-- (creaTermino n a) es el término a*x^n. Por ejemplo,
 --    creaTermino 2 5  ==  5*x^2
 creaTermino :: (Num t, Eq t) => Int -> t -> Polinomio t
 creaTermino n a = consPol n a polCero
@@ -75,12 +81,12 @@ termLider p = creaTermino (grado p) (coefLider p)
 -- Suma de polinomios                                                 --
 -- ---------------------------------------------------------------------
 
--- (sumaPol p q) es la suma de los polinomios p y q. Por ejemplo, 
+-- (sumaPol p q) es la suma de los polinomios p y q. Por ejemplo,
 --    ejPol1                 ==  3*x^4 + -5*x^2 + 3
 --    ejPol2                 ==  x^5 + 5*x^2 + 4*x
 --    sumaPol ejPol1 ejPol2  ==  x^5 + 3*x^4 + 4*x + 3
 sumaPol :: (Num a, Eq a) => Polinomio a -> Polinomio a -> Polinomio a
-sumaPol p q 
+sumaPol p q
   | esPolCero p = q
   | esPolCero q = p
   | n1 > n2      = consPol n1 a1 (sumaPol r1 q)
@@ -95,20 +101,20 @@ sumaPol p q
 
 -- Propiedad. El polinomio cero es el elemento neutro de la suma.
 prop_neutroSumaPol :: Polinomio Int -> Bool
-prop_neutroSumaPol p = 
+prop_neutroSumaPol p =
   sumaPol polCero p == p
 
 -- Comprobación con QuickCheck.
---    ghci> quickCheck prop_neutroSumaPol
+--    λ> quickCheck prop_neutroSumaPol
 --    OK, passed 100 tests.
 
 -- Propiedad. La suma es conmutativa.
 prop_conmutativaSuma :: Polinomio Int -> Polinomio Int -> Bool
-prop_conmutativaSuma p q = 
+prop_conmutativaSuma p q =
   sumaPol p q == sumaPol q p
 
 -- Comprobación:
---    ghci> quickCheck prop_conmutativaSuma
+--    λ> quickCheck prop_conmutativaSuma
 --    OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -121,22 +127,22 @@ prop_conmutativaSuma p q =
 --    ejPol2                     ==  x^5 + 5*x^2 + 4*x
 --    multPorTerm ejTerm ejPol2  ==  4*x^6 + 20*x^3 + 16*x^2
 multPorTerm :: (Num t, Eq t) => Polinomio t -> Polinomio t -> Polinomio t
-multPorTerm term pol 
+multPorTerm term pol
   | esPolCero pol = polCero
   | otherwise     = consPol (n+m) (a*b) (multPorTerm term r)
   where n = grado term
         a = coefLider term
         m = grado pol
         b = coefLider pol
-        r = restoPol pol    
+        r = restoPol pol
 
 -- (multPol p q) es el producto de los polinomios p y q. Por
 -- ejemplo,
---    ghci> ejPol1
+--    λ> ejPol1
 --    3*x^4 + -5*x^2 + 3
---    ghci> ejPol2
+--    λ> ejPol2
 --    x^5 + 5*x^2 + 4*x
---    ghci> multPol ejPol1 ejPol2
+--    λ> multPol ejPol1 ejPol2
 --    3*x^9 + -5*x^7 + 15*x^6 + 15*x^5 + -25*x^4 + -20*x^3 + 15*x^2 + 12*x
 multPol :: (Num a, Eq a) => Polinomio a -> Polinomio a -> Polinomio a
 multPol p q
@@ -146,36 +152,36 @@ multPol p q
 
 -- Propiedad. El producto de polinomios es conmutativo.
 prop_conmutativaProducto :: Polinomio Int -> Polinomio Int -> Bool
-prop_conmutativaProducto p q = 
+prop_conmutativaProducto p q =
   multPol p q == multPol q p
 
 -- La comprobación es
---    ghci> quickCheck prop_conmutativaProducto
+--    λ> quickCheck prop_conmutativaProducto
 --    OK, passed 100 tests.
 
 -- El producto es distributivo respecto de la suma.
-prop_distributivaProductoSuma :: Polinomio Int -> Polinomio Int 
+prop_distributivaProductoSuma :: Polinomio Int -> Polinomio Int
                                  -> Polinomio Int -> Bool
 prop_distributivaProductoSuma p q r =
   multPol p (sumaPol q r) == sumaPol (multPol p q) (multPol p r)
 
 -- Comprobación:
---    ghci> quickCheck prop_distributivaProductoSuma
+--    λ> quickCheck prop_distributivaProductoSuma
 --    OK, passed 100 tests.
 
--- polUnidad es el polinomio unidad. Por ejemplo, 
---    ghci> polUnidad
+-- polUnidad es el polinomio unidad. Por ejemplo,
+--    λ> polUnidad
 --    1
 polUnidad :: (Num t, Eq t) => Polinomio t
 polUnidad = consPol 0 1 polCero
 
 -- Propiedad. El polinomio unidad es el elemento neutro del producto.
 prop_polUnidad :: Polinomio Int -> Bool
-prop_polUnidad p = 
+prop_polUnidad p =
   multPol p polUnidad == p
 
 -- Comprobación:
---    ghci> quickCheck prop_polUnidad
+--    λ> quickCheck prop_polUnidad
 --    OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
@@ -183,13 +189,13 @@ prop_polUnidad p =
 -- ---------------------------------------------------------------------
 
 -- (valor p c) es el valor del polinomio p al sustituir su variable por
--- c. Por ejemplo, 
+-- c. Por ejemplo,
 --    ejPol1             ==  3*x^4 + -5*x^2 + 3
 --    valor ejPol1 0     ==  3
 --    valor ejPol1 1     ==  1
 --    valor ejPol1 (-2)  ==  31
 valor:: (Num a, Eq a) => Polinomio a -> a -> a
-valor p c 
+valor p c
   | esPolCero p = 0
   | otherwise   =  b*c^n + valor r c
   where n = grado p
@@ -201,7 +207,7 @@ valor p c
 -- ---------------------------------------------------------------------
 
 -- (esRaiz c p) se verifica si c es una raiz del polinomio p. por
--- ejemplo, 
+-- ejemplo,
 --    ejPol3           ==  6*x^4 + 2*x
 --    esRaiz 1 ejPol3  ==  False
 --    esRaiz 0 ejPol3  ==  True
@@ -212,11 +218,11 @@ esRaiz c p = valor p c == 0
 -- Derivación de polinomios                                           --
 -- ---------------------------------------------------------------------
 
--- (derivada p) es la derivada del polinomio p. Por ejemplo, 
+-- (derivada p) es la derivada del polinomio p. Por ejemplo,
 --    ejPol2           ==  x^5 + 5*x^2 + 4*x
 --    derivada ejPol2  ==  5*x^4 + 10*x + 4
 derivada :: (Eq a, Num a) => Polinomio a -> Polinomio a
-derivada p 
+derivada p
   | n == 0     = polCero
   | otherwise  = consPol (n-1) (b * fromIntegral n) (derivada r)
   where n = grado p
@@ -229,19 +235,49 @@ prop_derivada p q =
   derivada (sumaPol p q) == sumaPol (derivada p) (derivada q)
 
 -- Comprobación
---    ghci> quickCheck prop_derivada
---    OK, passed 100 tests. 
+--    λ> quickCheck prop_derivada
+--    OK, passed 100 tests.
 
 -- ---------------------------------------------------------------------
 -- Resta de polinomios                                                --
 -- ---------------------------------------------------------------------
 
 -- (resta p q) es la el polinomio obtenido restándole a p el q. Por
--- ejemplo, 
+-- ejemplo,
 --    ejPol1                  ==  3*x^4 + -5*x^2 + 3
 --    ejPol2                  ==  x^5 + 5*x^2 + 4*x
 --    restaPol ejPol1 ejPol2  ==  -1*x^5 + 3*x^4 + -10*x^2 + -4*x + 3
 restaPol :: (Num a, Eq a) => Polinomio a -> Polinomio a -> Polinomio a
-restaPol p q  = 
+restaPol p q  =
   sumaPol p (multPorTerm (creaTermino 0 (-1)) q)
 
+-- ---------------------------------------------------------------------
+-- § Verificación                                                     --
+-- ---------------------------------------------------------------------
+
+return []
+
+verificaPolOperaciones :: IO Bool
+verificaPolOperaciones = $quickCheckAll
+
+-- La verificación es
+--    λ> verificaPolOperaciones
+--    === prop_neutroSumaPol from PolOperaciones.hs:103 ===
+--    +++ OK, passed 100 tests.
+--
+--    === prop_conmutativaSuma from PolOperaciones.hs:112 ===
+--    +++ OK, passed 100 tests.
+--
+--    === prop_conmutativaProducto from PolOperaciones.hs:154 ===
+--    +++ OK, passed 100 tests.
+--
+--    === prop_distributivaProductoSuma from PolOperaciones.hs:163 ===
+--    +++ OK, passed 100 tests.
+--
+--    === prop_polUnidad from PolOperaciones.hs:179 ===
+--    +++ OK, passed 100 tests.
+--
+--    === prop_derivada from PolOperaciones.hs:233 ===
+--    +++ OK, passed 100 tests.
+--
+--    True
