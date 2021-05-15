@@ -53,22 +53,6 @@ escribePol pol
 instance (Num a, Show a, Eq a) => Show (Polinomio a) where
   show = escribePol
 
-
-instance (Num a, Show a, Eq a) => Show (Polinomio a) where
-  show pol
-    | esPolCero pol         = "0"
-    | n == 0 && esPolCero p = show a
-    | n == 0                = concat [show a, " + ", show p]
-    | n == 1 && esPolCero p = show a ++ "*x"
-    | n == 1                = concat [show a, "*x + ", show p]
-    | a == 1 && esPolCero p = "x^" ++ show n
-    | esPolCero p           = concat [show a, "*x^", show n]
-    | a == 1                = concat ["x^", show n, " + ", show p]
-    | otherwise             = concat [show a, "*x^", show n, " + ", show p]
-    where n = grado pol
-          a = coefLider pol
-          p = restoPol pol
-
 -- ---------------------------------------------------------------------
 -- Ejemplos de polinomios                                             --
 -- ---------------------------------------------------------------------
@@ -133,7 +117,7 @@ grado (Pol xs) = length xs - 1
 -- (coefLider p) es el coeficiente líder del polinomio p. Por ejemplo,
 --    ejPol3            ==  6*x^4 + 2*x
 --    coefLider ejPol3  ==  6
-coefLider:: Num t => Polinomio t -> t
+coefLider :: Num t => Polinomio t -> t
 coefLider (Pol [])    = 0
 coefLider (Pol (a:_)) = a
 
