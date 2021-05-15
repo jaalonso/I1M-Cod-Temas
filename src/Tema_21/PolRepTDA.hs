@@ -16,7 +16,7 @@ module Tema_21.PolRepTDA
   ) where
 
 -- ---------------------------------------------------------------------
--- TAD de los polinomios mediante un tipo de dato algebraico.         --
+-- TAD de los polinomios mediante un tipo de dato algebraico          --
 -- ---------------------------------------------------------------------
 
 -- Representamos un polinomio mediante los constructores ConsPol y
