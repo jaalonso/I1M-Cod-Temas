@@ -3,6 +3,7 @@
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
+{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
 
 module Tema_21.PolRepDensa
   ( Polinomio,
