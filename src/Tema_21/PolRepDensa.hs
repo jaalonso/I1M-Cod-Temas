@@ -1,8 +1,7 @@
 -- PolRepDensa.hs
 -- Implementación de polinomios mediante listas densas.
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 20 de Septiembre de 2010
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
 module Tema_21.PolRepDensa
   ( Polinomio,
