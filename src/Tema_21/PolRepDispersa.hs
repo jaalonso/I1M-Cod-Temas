@@ -1,11 +1,11 @@
--- PolRepDensa.hs
--- Implementación de polinomios mediante listas densas.
+-- PolRepDispersa.hs
+-- Implementación de polinomios mediante listas dispersas.
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 {-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
 
-module Tema_21.PolRepDensa
+module Tema_21.PolRepDispersa
   ( Polinomio,
     polCero,   -- Polinomio a
     esPolCero, -- Num a =>  Polinomio a -> Bool
@@ -16,7 +16,7 @@ module Tema_21.PolRepDensa
   ) where
 
 -- ---------------------------------------------------------------------
--- TAD de los polinomios mediante listas densas                       --
+-- TAD de los polinomios mediante listas dispersas                    --
 -- ---------------------------------------------------------------------
 
 -- Representaremos un polinomio mediante una lista de pares (grado,coef),
