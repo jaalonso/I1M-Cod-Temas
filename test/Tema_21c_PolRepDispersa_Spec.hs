@@ -1,4 +1,4 @@
-module Tema_21b_PolRepDispersa_Spec (main, spec) where
+module Tema_21c_PolRepDispersa_Spec (main, spec) where
 
 import Tema_21.PolRepDispersa
 import Test.Hspec
