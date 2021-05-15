@@ -9,7 +9,7 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-  describe "show" $ do
+  describe "Propiedades de los polinomios" $ do
     it "p1" $
       property prop_polCero_es_cero
     it "p2" $
