@@ -3,6 +3,7 @@
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
+
 module Tema_21.PolRepDensa
   ( Polinomio,
     polCero,   -- Polinomio a
