@@ -54,5 +54,5 @@ Los códigos de los temas son
   + [[./src/Tema_21/PolRepTDA.hs][Implementación de los polinomios mediante tipos de datos algebraicos]].
   + [[./src/Tema_21/PolRepDensa.hs][Implementación de los polinomios mediante listas densas]].
   + [[./src/Tema_21/PolRepDispersa.hs][Implementación de los polinomios mediante listas dispersas]].
-  + [[./src/Tema_21/PolOperaciones.hs][Operaciones con el TAD de los polinomios]].
   + [[./src/Tema_21/PolPropiedades.hs][Propiedades del TAD de los polinomios]].
+  + [[./src/Tema_21/PolOperaciones.hs][Operaciones con el TAD de los polinomios]].
