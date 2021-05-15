@@ -6,7 +6,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
 
 module Tema_21.PolOperaciones (module Pol,
                                module Tema_21.PolOperaciones) where
