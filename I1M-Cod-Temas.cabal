@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fe0edead53cc7393c6bcba5aab5d958edbfe16a57468a5d02622d28c372d90b1
+-- hash: 725b6ac1c0e88d4e6c4f9d0f35aea979d92eab25e65065dae685078cca17a56e
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -61,6 +61,11 @@ library
       Tema_20.ColaDePrioridadConMonticulos
       Tema_20.Monticulo
       Tema_20.MonticuloPropiedades
+      Tema_21.PolOperaciones
+      Tema_21.PolPropiedades
+      Tema_21.PolRepDensa
+      Tema_21.PolRepDispersa
+      Tema_21.PolRepTDA
       Tema_3
       Tema_4
       Tema_5
@@ -118,6 +123,7 @@ test-suite spec
       Tema_20a_Monticulo_Spec
       Tema_20b_MonticuloPropiedades_Spec
       Tema_20c_ColaDePrioridadConMonticulos_Spec
+      Tema_21a_PolRepTDA_Spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec
