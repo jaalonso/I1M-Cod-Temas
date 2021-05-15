@@ -1,56 +1,67 @@
--- PolRepDispersa.hs
--- Implementación de polinomios mediante listas dispersas.
+-- PolRepDensa.hs
+-- Implementación de polinomios mediante listas densas.
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
 {-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
 
-module Tema_21.PolRepDispersa
+module Tema_21.PolRepDensa
   ( Polinomio,
     polCero,   -- Polinomio a
-    esPolCero, -- Polinomio a -> Bool
-    consPol,   -- (Num a, Eq a) => Int -> a -> Polinomio a -> Polinomio a
+    esPolCero, -- Num a =>  Polinomio a -> Bool
+    consPol,   -- Num a => Int -> a -> Polinomio a -> Polinomio a
     grado,     -- Polinomio a -> Int
     coefLider, -- Num a => Polinomio a -> a
-    restoPol   -- (Num a, Eq a) => Polinomio a -> Polinomio a
+    restoPol   -- Polinomio a -> Polinomio a
   ) where
 
 -- ---------------------------------------------------------------------
--- TAD de los polinomios mediante listas dispersas                    --
+-- TAD de los polinomios mediante listas densas                       --
 -- ---------------------------------------------------------------------
 
--- Representaremos un polinomio por la lista de sus coeficientes ordenados
--- en orden decreciente según el grado. Por ejemplo, el polinomio
--- 6x^4 -5x^2 + 4x -7 se representa por [6,0,-2,4,-7].
+-- Representaremos un polinomio mediante una lista de pares (grado,coef),
+-- ordenados en orden decreciente según el grado. Por ejemplo, el
+-- polinomio
+--    6x^4 -5x^2 + 4x -7
+-- se representa por
+--    [(4,6),(2,-5),(1,4),(0,-7)].
 
-newtype Polinomio a = Pol [a]
+newtype Polinomio a = Pol [(Int,a)]
   deriving Eq
 
 -- ---------------------------------------------------------------------
 -- Escritura de los polinomios                                        --
 -- ---------------------------------------------------------------------
 
+-- (escribePol p) es la cadena correspondiente al polinomio p. Por
+-- ejemplo,
+--    λ> escribePol (consPol 4 3 (consPol 2 (-5) (consPol 0 3 polCero)))
+--    "3*x^4 + -5*x^2 + 3"
+escribePol :: (Num a, Show a, Eq a) => Polinomio a -> String
+escribePol pol
+  | esPolCero pol         = "0"
+  | n == 0 && esPolCero p = show a
+  | n == 0                = concat [show a, " + ", escribePol p]
+  | n == 1 && esPolCero p = show a ++ "*x"
+  | n == 1                = concat [show a, "*x + ", escribePol p]
+  | a == 1 && esPolCero p = "x^" ++ show n
+  | esPolCero p           = concat [show a, "*x^", show n]
+  | a == 1                = concat ["x^", show n, " + ", escribePol p]
+  | otherwise             = concat [show a, "*x^", show n, " + ", escribePol p]
+  where n = grado pol
+        a = coefLider pol
+        p = restoPol pol
+
+-- Procedimiento de escritura de polinomios.
 instance (Num a, Show a, Eq a) => Show (Polinomio a) where
-  show pol
-    | esPolCero pol         = "0"
-    | n == 0 && esPolCero p = show a
-    | n == 0                = concat [show a, " + ", show p]
-    | n == 1 && esPolCero p = show a ++ "*x"
-    | n == 1                = concat [show a, "*x + ", show p]
-    | a == 1 && esPolCero p = "x^" ++ show n
-    | esPolCero p           = concat [show a, "*x^", show n]
-    | a == 1                = concat ["x^", show n, " + ", show p]
-    | otherwise             = concat [show a, "*x^", show n, " + ", show p]
-    where n = grado pol
-          a = coefLider pol
-          p = restoPol pol
+  show = escribePol
 
 -- ---------------------------------------------------------------------
 -- Ejemplos de polinomios                                             --
 -- ---------------------------------------------------------------------
 
 -- Ejemplos de polinomios con coeficientes enteros:
-ejPol1, ejPol2, ejPol3:: Polinomio Int
+ejPol1, ejPol2, ejPol3 :: Polinomio Int
 ejPol1 = consPol 4 3 (consPol 2 (-5) (consPol 0 3 polCero))
 ejPol2 = consPol 5 1 (consPol 2 5 (consPol 1 4 polCero))
 ejPol3 = consPol 4 6 (consPol 1 2 polCero)
@@ -70,13 +81,13 @@ ejPol3 = consPol 4 6 (consPol 1 2 polCero)
 -- polCero es el polinomio cero. Por ejemplo,
 --    ghci> polCero
 --    0
-polCero :: Polinomio a
+polCero :: Num a => Polinomio a
 polCero = Pol []
 
 -- (esPolCero p) se verifica si p es el polinomio cero. Por ejemplo,
 --    esPolCero polCero  ==  True
 --    esPolCero ejPol1   ==  False
-esPolCero :: Polinomio a -> Bool
+esPolCero :: Num a => Polinomio a -> Bool
 esPolCero (Pol []) = True
 esPolCero _        = False
 
@@ -90,11 +101,11 @@ esPolCero _        = False
 consPol :: (Num a, Eq a) => Int -> a -> Polinomio a -> Polinomio a
 consPol _ 0 p = p
 consPol n b p@(Pol xs)
-    | esPolCero p = Pol (b : replicate n 0)
-    | n > m       = Pol (b : replicate (n-m-1) 0 ++ xs)
-    | n < m       = consPol m c (consPol n b (restoPol p))
-    | b+c == 0    = Pol (dropWhile (==0) (tail xs))
-    | otherwise   = Pol ((b+c):tail xs)
+    | esPolCero p = Pol [(n,b)]
+    | n > m       = Pol ((n,b):xs)
+    | n < m       = consPol m c (consPol n b (Pol (tail xs)))
+    | b+c == 0    = Pol (tail xs)
+    | otherwise   = Pol ((n,b+c) : tail xs)
     where
       c = coefLider p
       m = grado p
@@ -103,24 +114,22 @@ consPol n b p@(Pol xs)
 --    ejPol3        ==  6*x^4 + 2*x
 --    grado ejPol3  ==  4
 grado:: Polinomio a -> Int
-grado (Pol []) = 0
-grado (Pol xs) = length xs - 1
+grado (Pol [])        = 0
+grado (Pol ((n,_):_)) = n
 
 -- (coefLider p) es el coeficiente líder del polinomio p. Por ejemplo,
 --    ejPol3            ==  6*x^4 + 2*x
 --    coefLider ejPol3  ==  6
 coefLider:: Num t => Polinomio t -> t
-coefLider (Pol [])    = 0
-coefLider (Pol (a:_)) = a
+coefLider (Pol [])        = 0
+coefLider (Pol ((_,b):_)) = b
 
 -- (restoPol p) es el resto del polinomio p. Por ejemplo,
 --    ejPol3           ==  6*x^4 + 2*x
 --    restoPol ejPol3  ==  2*x
 --    ejPol2           ==  x^5 + 5*x^2 + 4*x
 --    restoPol ejPol2  ==  5*x^2 + 4*x
-restoPol :: (Num t, Eq t) => Polinomio t -> Polinomio t
+restoPol :: Num t => Polinomio t -> Polinomio t
 restoPol (Pol [])     = polCero
 restoPol (Pol [_])    = polCero
-restoPol (Pol (_:b:as))
-  | b == 0    = Pol (dropWhile (==0) as)
-  | otherwise = Pol (b:as)
+restoPol (Pol (_:xs)) = Pol xs
