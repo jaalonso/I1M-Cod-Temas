@@ -31,27 +31,35 @@ newtype Polinomio a = Pol [(Int,a)]
 -- Escritura de los polinomios                                        --
 -- ---------------------------------------------------------------------
 
-instance (Num t, Show t, Eq t) => Show (Polinomio t) where
-  show pol
-    | esPolCero pol         = "0"
-    | n == 0 && esPolCero p = show a
-    | n == 0                = concat [show a, " + ", show p]
-    | n == 1 && esPolCero p = show a ++ "*x"
-    | n == 1                = concat [show a, "*x + ", show p]
-    | a == 1 && esPolCero p = "x^" ++ show n
-    | esPolCero p           = concat [show a, "*x^", show n]
-    | a == 1                = concat ["x^", show n, " + ", show p]
-    | otherwise             = concat [show a, "*x^", show n, " + ", show p]
-    where n = grado pol
-          a = coefLider pol
-          p = restoPol pol
+-- (escribePol p) es la cadena correspondiente al polinomio p. Por
+-- ejemplo,
+--    λ> escribePol (consPol 4 3 (consPol 2 (-5) (consPol 0 3 polCero)))
+--    "3*x^4 + -5*x^2 + 3"
+escribePol :: (Num a, Show a, Eq a) => Polinomio a -> String
+escribePol pol
+  | esPolCero pol         = "0"
+  | n == 0 && esPolCero p = show a
+  | n == 0                = concat [show a, " + ", escribePol p]
+  | n == 1 && esPolCero p = show a ++ "*x"
+  | n == 1                = concat [show a, "*x + ", escribePol p]
+  | a == 1 && esPolCero p = "x^" ++ show n
+  | esPolCero p           = concat [show a, "*x^", show n]
+  | a == 1                = concat ["x^", show n, " + ", escribePol p]
+  | otherwise             = concat [show a, "*x^", show n, " + ", escribePol p]
+  where n = grado pol
+        a = coefLider pol
+        p = restoPol pol
+
+-- Procedimiento de escritura de polinomios.
+instance (Num a, Show a, Eq a) => Show (Polinomio a) where
+  show = escribePol
 
 -- ---------------------------------------------------------------------
 -- Ejemplos de polinomios                                             --
 -- ---------------------------------------------------------------------
 
 -- Ejemplos de polinomios con coeficientes enteros:
-ejPol1, ejPol2, ejPol3:: Polinomio Int
+ejPol1, ejPol2, ejPol3 :: Polinomio Int
 ejPol1 = consPol 4 3 (consPol 2 (-5) (consPol 0 3 polCero))
 ejPol2 = consPol 5 1 (consPol 2 5 (consPol 1 4 polCero))
 ejPol3 = consPol 4 6 (consPol 1 2 polCero)
