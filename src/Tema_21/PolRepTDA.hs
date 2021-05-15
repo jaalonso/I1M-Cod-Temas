@@ -1,8 +1,7 @@
 -- PolRepTDA.hs
 -- Implementación de los polinomios mediante tipos de datos algebraicos.
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 19 de Septiembre de 2010
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
 {-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
 
