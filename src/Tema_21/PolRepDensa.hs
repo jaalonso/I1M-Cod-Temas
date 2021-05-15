@@ -14,7 +14,7 @@ module Tema_21.PolRepDensa
   ) where
 
 -- ---------------------------------------------------------------------
--- TAD de los polinomios mediante listas densas.                      --
+-- TAD de los polinomios mediante listas densas                       --
 -- ---------------------------------------------------------------------
 
 -- Representaremos un polinomio mediante una lista de pares (grado,coef),
