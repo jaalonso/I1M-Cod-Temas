@@ -214,6 +214,20 @@ instance Arbitrary (Grafo Int Int) where
 -- § Verificación                                                     --
 -- ---------------------------------------------------------------------
 
+-- (conexo g) se verifica si el grafo no dirigido g es conexo. Por
+-- ejemplo,
+--    conexo (creaGrafo False (1,3) [(1,2,0),(3,2,0)])  ==  True
+--    conexo (creaGrafo False (1,4) [(1,2,0),(3,4,0)])  ==  False
+conexo :: (Ix a, Num p, Eq p) => Grafo a p -> Bool
+conexo g = length (recorridoEnAnchura i g) == n
+    where xs = nodos g
+          i  = head xs
+          n  = length xs
+
+-- Propiedad: Si g es un grafo no dirigido conexo y con aristas, entonces
+-- + (kruskal g) tiene el mismo conjunto de nodos que g,
+-- + (prim g) tiene el mismo conjunto de nodos que g y
+-- + los pesos de (kruskal g) y (prim g) son iguales.
 prop_AE :: Grafo Int Int -> Property
 prop_AE g =
   not (null (aristas g)) && conexo g ==>
@@ -223,16 +237,6 @@ prop_AE g =
   where ns = nodos g
         nodosAE ae = sort (nub (concat [[x,y] | (_,x,y) <- ae]))
         pesoAE xs = sum [p | (p,_,_) <- xs]
-
--- (conexo g) se verifica si el grafo ni dirigido g es conexo. Por
--- ejemplo,
---    conexo (creaGrafo False (1,3) [(1,2,0),(3,2,0)])  ==  True
---    conexo (creaGrafo False (1,4) [(1,2,0),(3,4,0)])  ==  False
-conexo :: (Ix a, Num p, Eq p) => Grafo a p -> Bool
-conexo g = length (recorridoEnAnchura i g) == n
-    where xs = nodos g
-          i  = head xs
-          n  = length xs
 
 -- La comprobación es
 --    λ> quickCheck prop_AE
