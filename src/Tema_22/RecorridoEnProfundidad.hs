@@ -1,18 +1,18 @@
 -- RecorridoEnProfundidad.hs
 -- Recorrido en profundidad
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 24 de Octubre de 2010 (Revisión del 25 de Abril de 2012)
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
-module RecorridoEnProfundidad where
+module Tema_22.RecorridoEnProfundidad where
 
 -- ---------------------------------------------------------------------
 -- Librerías auxiliares                                               --
 -- ---------------------------------------------------------------------
 
 -- Nota: Elegir una implementación de los grafos.
-import GrafoConVectorDeAdyacencia
--- import GrafoConMatrizDeAdyacencia
+import Tema_22.GrafoConVectorDeAdyacencia
+-- import Tema_22.GrafoConMatrizDeAdyacencia
+-- import I1M.Grafo
 
 import Data.Ix
 
@@ -30,7 +30,7 @@ import Data.Ix
 --    +---> 4 <---------+
 
 ejG :: Grafo Integer Integer
-ejG = creaGrafo D (1,6) 
+ejG = creaGrafo D (1,6)
                   [(1,2,0),(1,3,0),(1,4,0),(3,6,0),(5,4,0),(6,2,0),(6,5,0)]
 
 -- ---------------------------------------------------------------------
@@ -40,11 +40,11 @@ ejG = creaGrafo D (1,6)
 -- (recorridoEnProfundidad i g) es el recorrido en profundidad del grafo g
 -- desde el vértice i. Por ejemplo,
 --    recorridoEnProfundidad 1 ejG  ==  [1,2,3,6,5,4]
-recorridoEnProfundidad :: (Num p, Ix v) => v -> Grafo v p -> [v]
+recorridoEnProfundidad :: (Num p, Eq p, Ix v) => v -> Grafo v p -> [v]
 recorridoEnProfundidad i g = rp [i] []
-  where 
+  where
     rp [] vis    = vis
-    rp (c:cs) vis 
+    rp (c:cs) vis
         | c `elem` vis = rp cs vis
         | otherwise    = rp (adyacentes g c ++ cs) (vis ++ [c])
 
@@ -67,13 +67,13 @@ recorridoEnProfundidad i g = rp [i] []
 
 -- (recorridoEnProfundidad' i g) es el recorrido en profundidad del
 -- grafo g desde el vértice i, usando la lista de los visitados como
--- acumulador. Por ejemplo, 
+-- acumulador. Por ejemplo,
 --    recorridoEnProfundidad' 1 ejG  ==  [1,2,3,6,5,4]
-recorridoEnProfundidad' :: (Num p, Ix v) => v -> Grafo v p -> [v]
+recorridoEnProfundidad' :: (Num p, Eq p, Ix v) => v -> Grafo v p -> [v]
 recorridoEnProfundidad' i g = reverse (rp [i] [])
   where
     rp [] vis     = vis
-    rp (c:cs) vis 
+    rp (c:cs) vis
         | c `elem` vis = rp cs vis
         | otherwise    = rp (adyacentes g c ++ cs) (c:vis)
 
