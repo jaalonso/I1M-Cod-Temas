@@ -56,3 +56,9 @@ Los códigos de los temas son
   + [[./src/Tema_21/PolRepDispersa.hs][Implementación de los polinomios mediante listas dispersas]].
   + [[./src/Tema_21/PolPropiedades.hs][Propiedades del TAD de los polinomios]].
   + [[./src/Tema_21/PolOperaciones.hs][Operaciones con el TAD de los polinomios]].
++ Tema 22: Algoritmos sobre grafos:
+  + [[./src/Tema_22/GrafoConVectorDeAdyacencia.hs][Implementación de los grafos mediante vectores de adyacencia]].
+  + [[./src/Tema_22/GrafoConMatrizDeAdyacencia.hs][Implementación de los grafos mediante matrices de adyacencia]].
+  + [[./src/Tema_22/RecorridoEnProfundidad.hs][Recorrido en profundidad]].
+  + [[./src/Tema_22/RecorridoEnAnchura.hs][Recorrido en anchura]].
+  + [[./src/Tema_22/AlgoritmoDeKruskal.hs][Algoritmos de Kruskal y de Prim]].
