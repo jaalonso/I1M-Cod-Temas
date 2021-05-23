@@ -1,13 +1,14 @@
 -- GrafoConMatrizDeAdyacencia.hs
 -- Representación del TAD grafo mediante matriz de adyacencia.
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 24 de Octubre de 2010 (Revisión del 25 de Abril de 2012)
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
-module GrafoConMatrizDeAdyacencia
+{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
+
+module Tema_22.GrafoConMatrizDeAdyacencia
   (Orientacion (..),
    Grafo,
-   creaGrafo,  -- (Ix v,Num p) => Orientacion -> (v,v) -> [(v,v,p)] -> 
+   creaGrafo,  -- (Ix v,Num p) => Orientacion -> (v,v) -> [(v,v,p)] ->
                --                 Grafo v p
    dirigido,   -- (Ix v,Num p) => (Grafo v p) -> Bool
    adyacentes, -- (Ix v,Num p) => (Grafo v p) -> v -> [v]
@@ -17,10 +18,7 @@ module GrafoConMatrizDeAdyacencia
    peso        -- (Ix v,Num p) => v -> v -> (Grafo v p) -> p
   ) where
 
--- ---------------------------------------------------------------------
--- Librerías auxiliares                                               --
--- ---------------------------------------------------------------------
-
+-- Librería auxiliar                                               --
 import Data.Array
 
 -- Orientacion es D (dirigida) ó ND (no dirigida).
@@ -58,8 +56,8 @@ matrizVacia (l,u) =
 --        3 -------- 4
 --             61
 -- representado mediante una matriz de adyacencia.
---    ghci> ejGrafoND
---    G ND array ((1,1),(5,5)) 
+--    λ> ejGrafoND
+--    G ND array ((1,1),(5,5))
 --               [((1,1),Nothing),((1,2),Just 12),((1,3),Just 34),
 --                ((1,4),Nothing),((1,5),Just 78),((2,1),Just 12),
 --                ((2,2),Nothing),((2,3),Nothing),((2,4),Just 55),
@@ -77,8 +75,8 @@ ejGrafoND = creaGrafo ND (1,5) [(1,2,12),(1,3,34),(1,5,78),
 
 -- ejGrafoD es el mismo grafo que ejGrafoND pero orientando las aristas;
 -- es decir,
---    ghci> ejGrafoD
---    G D (array ((1,1),(5,5)) 
+--    λ> ejGrafoD
+--    G D (array ((1,1),(5,5))
 --               [((1,1),Nothing),((1,2),Just 12),((1,3),Just 34),
 --                ((1,4),Nothing),((1,5),Just 78),((2,1),Nothing),
 --                ((2,2),Nothing),((2,3),Nothing),((2,4),Just 55),
@@ -104,7 +102,7 @@ dirigido (G o _) = o == D
 --    nodos ejGrafoND  ==  [1,2,3,4,5]
 --    nodos ejGrafoD   ==  [1,2,3,4,5]
 nodos :: (Ix v,Num p) => Grafo v p -> [v]
-nodos (G _ g) = range (l,u) 
+nodos (G _ g) = range (l,u)
   where ((l,_),(u,_)) = bounds g
 
 -- (adyacentes g v) es la lista de los vértices adyacentes al nodo v en
@@ -112,7 +110,7 @@ nodos (G _ g) = range (l,u)
 --    adyacentes ejGrafoND 4  ==  [2,3,5]
 --    adyacentes ejGrafoD  4  ==  [5]
 adyacentes :: (Ix v,Num p,Eq p) => Grafo v p -> v -> [v]
-adyacentes (G o g) v = 
+adyacentes (G o g) v =
   [v' | v' <- nodos (G o g), (g!(v,v')) /= Nothing]
 
 -- (aristaEn g a) se verifica si a es una arista del grafo g. Por
@@ -129,17 +127,18 @@ aristaEn (G _o g) (x,y)= (g!(x,y)) /= Nothing
 peso :: (Ix v,Num p) => v -> v -> Grafo v p -> p
 peso x y (G _ g)  = w where (Just w) = g!(x,y)
 
--- (aristas g) es la lista de las aristas del grafo g. Por ejemplo, 
---    ghci> aristas ejGrafoD
+-- (aristas g) es la lista de las aristas del grafo g. Por ejemplo,
+--    λ> aristas ejGrafoD
 --    [(1,2,12),(1,3,34),(1,5,78),(2,4,55),(2,5,32),(3,4,61),
---     (3,5,44),(4,5,93)] 
---    ghci> aristas ejGrafoND
+--     (3,5,44),(4,5,93)]
+--    λ> aristas ejGrafoND
 --    [(1,2,12),(1,3,34),(1,5,78),(2,1,12),(2,4,55),(2,5,32),
 --     (3,1,34),(3,4,61),(3,5,44),(4,2,55),(4,3,61),(4,5,93),
 --     (5,1,78),(5,2,32),(5,3,44),(5,4,93)]
 aristas :: (Ix v,Num p, Eq p) => Grafo v p -> [(v,v,p)]
-aristas g@(G _ e) = [(v1,v2,extrae(e!(v1,v2))) 
-                     | v1 <- nodos g, 
+aristas g@(G _ e) = [(v1,v2,extrae(e!(v1,v2)))
+                     | v1 <- nodos g,
                        v2 <- nodos g,
                        aristaEn g (v1,v2)]
   where extrae (Just w) = w
+        extrae _        = error "Imposible"
