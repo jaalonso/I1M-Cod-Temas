@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bc477f56e6ab5e2ad0d6afec6ca905ee18ee3200184ae8bc739e2dda333395dd
+-- hash: b69a476bc606cec8a35685314e321c804dd83b5dd205dd630bcdfad037c56b2e
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -137,6 +137,7 @@ test-suite spec
       Tema_22b_GrafoConMatrizDeAdyacencia_Spec
       Tema_22c_RecorridoEnProfundidad_Spec
       Tema_22d_RecorridoEnAnchura_Spec
+      Tema_22e_AlgoritmoDeKruskal_Spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec
