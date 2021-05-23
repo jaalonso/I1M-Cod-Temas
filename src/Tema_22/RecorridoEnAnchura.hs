@@ -1,20 +1,20 @@
 -- RecorridoEnAnchura.hs
 -- Recorrido en anchura
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 2 de Noviembre de 2010 (Revisión del 25 de Abril de 2012)
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
-module RecorridoEnAnchura where
-
-import Data.Ix
+module Tema_22.RecorridoEnAnchura where
 
 -- ---------------------------------------------------------------------
 -- Librerías auxiliares                                               --
 -- ---------------------------------------------------------------------
 
 -- Nota: Elegir una implementación de los grafos.
-import GrafoConVectorDeAdyacencia
--- import GrafoConMatrizDeAdyacencia
+import Tema_22.GrafoConVectorDeAdyacencia
+-- import Tema_22.GrafoConMatrizDeAdyacencia
+-- import I1M.Grafo
+
+import Data.Ix
 
 -- ---------------------------------------------------------------------
 -- Ejemplo de grafo                                                   --
@@ -29,7 +29,7 @@ import GrafoConVectorDeAdyacencia
 --    |                 |
 --    +---> 4 <---------+
 ejG :: Grafo Integer Integer
-ejG = creaGrafo D (1,6) 
+ejG = creaGrafo D (1,6)
                   [(1,2,0),(1,3,0),(1,4,0),(3,6,0),(5,4,0),(6,2,0),(6,5,0)]
 
 -- ---------------------------------------------------------------------
@@ -37,13 +37,13 @@ ejG = creaGrafo D (1,6)
 -- ---------------------------------------------------------------------
 
 -- (recorridoEnAnchura i g) es el recorrido en anchura del grafo g
--- desde el vértice i, usando colas. Por ejemplo, 
---    recorridoEnAnchura 1 ejG  ==  [1,4,3,2,6,5]
-recorridoEnAnchura :: (Num p, Ix v) => v -> Grafo v p -> [v]
+-- desde el vértice i, usando colas. Por ejemplo,
+--    recorridoEnAnchura 1 ejG  ==  [1,2,3,4,6,5]
+recorridoEnAnchura :: (Num p, Eq p, Ix v) => v -> Grafo v p -> [v]
 recorridoEnAnchura i g = reverse (ra [i] [])
-  where 
+  where
     ra [] vis    = vis
-    ra (c:cs) vis 
+    ra (c:cs) vis
         | c `elem` vis = ra cs vis
         | otherwise    = ra (cs ++ adyacentes g c) (c:vis)
 
