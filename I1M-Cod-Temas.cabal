@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 444b9fbfc88995de1cbbd703956f4ff24a9ad13d3fa066673f4e7042996deed4
+-- hash: 70655f23aed7da5f98d421b597b8063ef3aa358725b03c47ef0c42b995de2634
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -133,6 +133,7 @@ test-suite spec
       Tema_21c_PolRepDispersa_Spec
       Tema_21d_PolPropiedades_Spec
       Tema_21e_PolOperaciones_Spec
+      Tema_22a_GrafoConVectorDeAdyacencia_Spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec
