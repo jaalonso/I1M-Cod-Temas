@@ -33,12 +33,10 @@ data Grafo v p = G Orientacion (Array v [(v,p)])
 -- con el par de cotas cs y listas de aristas as (cada arista es un trío
 -- formado por los dos vértices y su peso). Ver el ejemplo a continuación.
 creaGrafo :: (Ix v, Num p) => Orientacion -> (v,v) -> [(v,v,p)] -> Grafo v p
-creaGrafo ND cs vs =
-  G ND (accumArray (\xs x -> xs++[x]) [] cs
-                   [(x1,(x2,p)) | (x1,x2,p) <- vs])
-creaGrafo D cs vs =
-  G D (accumArray (\xs x -> xs++[x]) [] cs
-                  ([(x2,(x1,p)) | (x1,x2,p) <- vs, x1 /= x2] ++
+creaGrafo o cs vs =
+  G o (accumArray (\xs x -> xs++[x]) [] cs
+                  ((if o == D then []
+                    else [(x2,(x1,p))|(x1,x2,p) <- vs, x1 /= x2]) ++
                    [(x1,(x2,p)) | (x1,x2,p) <- vs]))
 
 -- ejGrafoND es el grafo
