@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 41df2b5f15bb76a150a405e81a898bc9c21b08fb9237e76b71e7457d56470362
+-- hash: 444b9fbfc88995de1cbbd703956f4ff24a9ad13d3fa066673f4e7042996deed4
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -66,6 +66,11 @@ library
       Tema_21.PolRepDensa
       Tema_21.PolRepDispersa
       Tema_21.PolRepTDA
+      Tema_22.AlgoritmoDeKruskal
+      Tema_22.GrafoConMatrizDeAdyacencia
+      Tema_22.GrafoConVectorDeAdyacencia
+      Tema_22.RecorridoEnAnchura
+      Tema_22.RecorridoEnProfundidad
       Tema_3
       Tema_4
       Tema_5
