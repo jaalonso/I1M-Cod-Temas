@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b69a476bc606cec8a35685314e321c804dd83b5dd205dd630bcdfad037c56b2e
+-- hash: f9cf29bd073dc64ba267abbfdf82a11354cebdcba67d3b950be2a4a3296e9a12
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -71,6 +71,17 @@ library
       Tema_22.GrafoConVectorDeAdyacencia
       Tema_22.RecorridoEnAnchura
       Tema_22.RecorridoEnProfundidad
+      Tema_23.BEE_Mochila
+      Tema_23.BEE_Reinas
+      Tema_23.BPM_8Puzzle
+      Tema_23.BusquedaEnEscalada
+      Tema_23.BusquedaEnEspaciosDeEstados
+      Tema_23.BusquedaPrimeroElMejor
+      Tema_23.DivideVenceras
+      Tema_23.DivideVencerasOrdMezcla
+      Tema_23.DivideVencerasOrdRapida
+      Tema_23.Escalada_Monedas
+      Tema_23.Escalada_Prim
       Tema_3
       Tema_4
       Tema_5
@@ -138,6 +149,13 @@ test-suite spec
       Tema_22c_RecorridoEnProfundidad_Spec
       Tema_22d_RecorridoEnAnchura_Spec
       Tema_22e_AlgoritmoDeKruskal_Spec
+      Tema_23a_DivideVencerasOrdMezcla_Spec
+      Tema_23b_DivideVencerasOrdRapida_Spec
+      Tema_23c_BEE_Reinas_Spec
+      Tema_23d_BEE_Mochila_Spec
+      Tema_23e_BPM_8Puzzle_Spec
+      Tema_23f_Escalada_Monedas_Spec
+      Tema_23g_Escalada_Prim_Spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec

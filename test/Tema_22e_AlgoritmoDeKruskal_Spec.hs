@@ -1,4 +1,4 @@
-module Tema_22c_AlgoritmoDeKruskal_Spec (main, spec) where
+module Tema_22e_AlgoritmoDeKruskal_Spec (main, spec) where
 
 import Tema_22.AlgoritmoDeKruskal
 import Test.Hspec

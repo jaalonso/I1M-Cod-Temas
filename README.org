@@ -62,3 +62,19 @@ Los códigos de los temas son
   + [[./src/Tema_22/RecorridoEnProfundidad.hs][Recorrido en profundidad]].
   + [[./src/Tema_22/RecorridoEnAnchura.hs][Recorrido en anchura]].
   + [[./src/Tema_22/AlgoritmoDeKruskal.hs][Algoritmos de Kruskal y de Prim]].
++ Tema 23: Técnicas de diseño descendente de algoritmos:
+  + Divide y vencerás
+    + [[./src/Tema_23/DivideVenceras.hs][El patrón divide y vencerás]].
+    + [[./src/Tema_23/DivideVencerasOrdMezcla.hs][Ordenación por mezcla]].
+    + [[./src/Tema_23/DivideVencerasOrdRapida.hs][Ordenación rápida]].
+  + Búsqueda en espacios de estados:
+    + [[./src/Tema_23/BusquedaEnEspaciosDeEstados.hs][El patrón de búsqueda en espacios de estados]].
+    + [[./src/Tema_23/BEE_Reinas.hs][El problema de las n reinas]].
+    + [[./src/Tema_23/BEE_Mochila.hs][El problema de la mochila]].
+  + Búsqueda por primero el mejor:
+    + [[./src/Tema_23/BusquedaPrimeroElMejor.hs][El patrón de búsqueda por primero el mejor]].
+    + [[./src/Tema_23/BPM_8Puzzle.hs][El 8 puzzle]].
+  + Búsqueda en escalada:
+    + [[./src/Tema_23/BusquedaEnEscalada.hs][El patrón de búsqueda en escalada]].
+    + [[./src/Tema_23/Escalada_Monedas.hs][El problema del cambio de monedas]].
+    + [[./src/Tema_23/Escalada_Prim.hs][El algoritmo de Prim del árbol de expansión mínimo]].

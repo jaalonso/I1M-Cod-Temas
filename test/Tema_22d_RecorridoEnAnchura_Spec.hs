@@ -1,4 +1,4 @@
-module Tema_22c_RecorridoEnAnchura_Spec (main, spec) where
+module Tema_22d_RecorridoEnAnchura_Spec (main, spec) where
 
 import Tema_22.RecorridoEnAnchura
 import Test.Hspec
