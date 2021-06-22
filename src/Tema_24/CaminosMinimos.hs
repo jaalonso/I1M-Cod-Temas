@@ -1,46 +1,48 @@
 -- CaminosMinimos.hs
 -- Caminos mínimos entre todos los pares de nodos de un grafo
--- José A. Alonso Jiménez <jalonso@us.es>
--- Sevilla, 22 de Enero de 2011
--- ---------------------------------------------------------------------
+-- José A. Alonso Jiménez https://jaalonso.github.com
+-- =====================================================================
 
-module CaminisMinimos where
+module Tema_24.CaminosMinimos where
 
 -- ---------------------------------------------------------------------
 -- Descripción del problema                                           --
 -- ---------------------------------------------------------------------
 
 -- Cálculo de los caminos de coste mínimo entre todos los pares de nodos
--- de un grafo no dirigido. 
+-- de un grafo no dirigido.
 
 -- ---------------------------------------------------------------------
 -- El algoritmo                                                       --
 -- ---------------------------------------------------------------------
 
 -- c(i,j) es el mínimo coste del camino del vértice i al j.
-
+--
 -- p(i,j) es el peso del arco entre i y j. Está definida por
 --    * Si i=j, entonces p(i,j) = 0
 --    * en caso contrario, p(i,j) = infinito.
- 
+--
 -- c(i,j,k) es el mínimo coste del camino del vértice i al j, usando los
 -- vértices 1,...,k.
-
+--
 -- Relación de recurrencia para calcular c(i,j):
 --    * c(i,j,0) = p(i,j)
 --    * c(i,j,k) = min {c(i,j,k-1), c(i,k,k-1)+c(k,j,k-1)}
-
+--
 -- El algoritmo se conoce como el algoritmo de Floyd.
 
 -- ---------------------------------------------------------------------
 -- Importación de librerías auxiliares                                --
 -- ---------------------------------------------------------------------
 
-import Dinamica
+-- Hay que elegir una Importación
+-- import Tema_24.Dinamica
+import I1M.Dinamica
 
 -- Nota: Elegir una implementación de los grafos.
-import GrafoConVectorDeAdyacencia
--- import GrafoConMatrizDeAdyacencia
+-- import Tema_22.GrafoConVectorDeAdyacencia
+-- import Tema_22.GrafoConMatrizDeAdyacencia
+import I1M.Grafo
 
 -- ---------------------------------------------------------------------
 -- Solución mediante programación dinámica                            --
@@ -48,7 +50,7 @@ import GrafoConVectorDeAdyacencia
 
 -- Ejemplos de grafos (el 1º es el de la página 189)
 ej1Grafo :: Grafo Int Int
-ej1Grafo = creaGrafo ND (1,6) 
+ej1Grafo = creaGrafo ND (1,6)
                      [(i,j,(v!!(i-1))!!(j-1)) | i <- [1..6], j <- [1..6]]
 
 v :: [[Int]]
@@ -60,16 +62,16 @@ v = [[  0,  4,  1,  6,100,100],
      [100,100,  2,  2,  5,  0]]
 
 ej2Grafo :: Grafo Int Int
-ej2Grafo = creaGrafo ND (1,6) 
+ej2Grafo = creaGrafo ND (1,6)
                      [(i,j,(v'!!(i-1))!!(j-1)) |i<-[1..6],j<-[1..6]]
 
-v'::[[Int]]
-v' =[[  0,  4,100,100,100,  2],
-     [  1,  0,  3,  4,100,100],
-     [  6,  3,  0,  7,100,100],
-     [  6,100,100,  0,  2,100],
-     [100,100,100,  5,  0,100],
-     [100,100,100,  2,  3,  0]]
+v' :: [[Int]]
+v' = [[  0,  4,100,100,100,  2],
+      [  1,  0,  3,  4,100,100],
+      [  6,  3,  0,  7,100,100],
+      [  6,100,100,  0,  2,100],
+      [100,100,100,  5,  0,100],
+      [100,100,100,  2,  3,  0]]
 
 -- En la matriz del cálculo del camino mínimo, los índices son de la
 -- forma (i,j,k) y los valores de la forma (v,xs) representando que el
@@ -80,23 +82,23 @@ type ValorCM  = (Int,[Int])
 
 -- (caminosMinimos g) es la lista de los caminos mínimos entre todos los
 -- nodos del grafo g junto con sus costes. Por ejemplo,
---    ghci> caminosMinimos ej1Grafo
+--    λ> caminosMinimos ej1Grafo
 --    [((1,2),(2,[1,3,2])),  ((1,3),(1,[1,3])),  ((1,4),(5,[1,3,6,4])),
 --     ((1,5),(7,[1,3,2,5])),((1,6),(3,[1,3,6])),((2,3),(1,[2,3])),
 --     ((2,4),(5,[2,3,6,4])),((2,5),(5,[2,5])),  ((2,6),(3,[2,3,6])),
 --     ((3,4),(4,[3,6,4])),  ((3,5),(6,[3,2,5])),((3,6),(2,[3,6])),
 --     ((4,5),(7,[4,6,5])),  ((4,6),(2,[4,6])),  ((5,6),(5,[5,6]))]
---    ghci> caminosMinimos ej2Grafo
---    [((1,2),(4,[1,2])),  ((1,3),(7,[1,2,3])),((1,4),(4,[1,6,4])),
---     ((1,5),(5,[1,6,5])),((1,6),(2,[1,6])),  ((2,3),(3,[2,3])),
---     ((2,4),(4,[2,4])),  ((2,5),(6,[2,4,5])),((2,6),(3,[2,1,6])),
---     ((3,4),(7,[3,4])),  ((3,5),(9,[3,4,5])),((3,6),(6,[3,2,1,6])),
---     ((4,5),(2,[4,5])),  ((4,6),(8,[4,1,6])),((5,6),(13,[5,4,1,6]))]
+--    λ> caminosMinimos ej2Grafo
+--    [((1,2),(1,[1,2])),     ((1,3),(4,[1,2,3])),     ((1,4),(6,[1,4])),
+--     ((1,5),(11,[1,4,5])),  ((1,6),(8,[1,4,6])),     ((2,3),(3,[2,3])),
+--     ((2,4),(10,[2,1,4])),  ((2,5),(15,[2,1,4,5])),  ((2,6),(12,[2,1,4,6])),
+--     ((3,4),(13,[3,2,1,4])),((3,5),(18,[3,2,1,4,5])),((3,6),(15,[3,2,1,4,6])),
+--     ((4,5),(5,[4,5])),     ((4,6),(2,[4,6])),       ((5,6),(3,[5,6]))]
 caminosMinimos :: (Grafo Int Int) -> [((Int,Int), ValorCM)]
-caminosMinimos g = 
+caminosMinimos g =
   [((i,j), valor t (i,j,n)) | i <- [1..n], j <- [i+1..n]]
   where n = length (nodos g)
-        t = dinamica (calculaCM g) (cotasCM n) 
+        t = dinamica (calculaCM g) (cotasCM n)
 
 -- (calculaCM g t (i,j,k)) es el valor del camino mínimo desde el vértice
 -- i al j usando los vértices 1,...,k del grafo g y la tabla t de los
@@ -104,7 +106,7 @@ caminosMinimos g =
 calculaCM :: (Grafo Int Int) -> Tabla IndiceCM ValorCM -> IndiceCM -> ValorCM
 calculaCM g t (i,j,k)
   | k==0      = (peso i j g , if i==j then [i] else [i,j])
-  | v1<=v2    = (v1,p)  
+  | v1<=v2    = (v1,p)
   | otherwise = (v2,p1++p2)
   where (v1,p)   = valor t (i,j,k-1)
         (a,p1)   = valor t (i,k,k-1)
@@ -118,7 +120,7 @@ cotasCM n = ((1,1,0),(n,n,n))
 
 -- Se puede observar el cálculo de la solución como sigue:
 {-
-ghci> dinamica (calculaCM ej1Grafo) (cotasCM 6)
+λ> dinamica (calculaCM ej1Grafo) (cotasCM 6)
 Tbl [
 ((1,1,0),(0,[1])),       ((1,1,1),(0,[1])),      ((1,1,2),(0,[1])),
 ((1,1,3),(0,[1])),       ((1,1,4),(0,[1])),      ((1,1,5),(0,[1])),
@@ -205,4 +207,3 @@ Tbl [
 ((6,6,1),(0,[6])),       ((6,6,2),(0,[6])),      ((6,6,3),(0,[6])),
 ((6,6,4),(0,[6])),       ((6,6,5),(0,[6])),      ((6,6,6),(0,[6]))]
 -}
-

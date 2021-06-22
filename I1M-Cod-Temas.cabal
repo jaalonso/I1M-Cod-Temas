@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e98eb13a62783c4f6c0cf570d0e0c324907608b899a5ad31cabdf60ec0aeb6eb
+-- hash: 8fab0c0d5121853193d8a0b82c96170a119da8ec69a433e1048700654d7bc855
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -163,6 +163,8 @@ test-suite spec
       Tema_23g_Escalada_Prim_Spec
       Tema_24a_Fibonacci_Spec
       Tema_24b_ProductoDeCadenaDeMatrices_Spec
+      Tema_24c_CaminosMinimos_Spec
+      Tema_24d_ProblemaDelViajante_Spec
       Tema_2_Spec
       Tema_3_Spec
       Tema_4_Spec
