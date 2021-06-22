@@ -78,3 +78,9 @@ Los códigos de los temas son
     + [[./src/Tema_23/BusquedaEnEscalada.hs][El patrón de búsqueda en escalada]].
     + [[./src/Tema_23/Escalada_Monedas.hs][El problema del cambio de monedas]].
     + [[./src/Tema_23/Escalada_Prim.hs][El algoritmo de Prim del árbol de expansión mínimo]].
++ Tema 24: Programación dinámica:
+  + [[./src/Tema_24/Dinamica.hs][Patrón de la programación dinámica]].
+  + [[./src/Tema_24/Fibonacci.hs][Fibonacci como ejemplo de programación dinámica]].
+  + [[./src/Tema_24/ProductoDeCadenaDeMatrices.hs][Producto de cadenas de matrices]].
+  + [[./src/Tema_24/CaminosMinimos.hs][Caminos mínimos entre todos los pares de nodos de un grafo]].
+  + [[./src/Tema_24/ProblemaDelViajante.hs][Problema del viajante]].
