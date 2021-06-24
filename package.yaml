@@ -16,6 +16,7 @@ extra-source-files:
 dependencies:
   - array
   - containers
+  - gloss
   - hspec
   - hspec-core
   - matrix

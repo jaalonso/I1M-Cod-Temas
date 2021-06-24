@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8fab0c0d5121853193d8a0b82c96170a119da8ec69a433e1048700654d7bc855
+-- hash: ec2e3a238498c547567ce0606fd7a0bf168c5acf71bcfb05469de7657dd7a517
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -87,6 +87,7 @@ library
       Tema_24.Fibonacci
       Tema_24.ProblemaDelViajante
       Tema_24.ProductoDeCadenaDeMatrices
+      Tema_25.Parabola1
       Tema_3
       Tema_4
       Tema_5
@@ -102,6 +103,7 @@ library
     , array
     , base >=4.7 && <5
     , containers
+    , gloss
     , gnuplot
     , hspec
     , hspec-core
@@ -183,6 +185,7 @@ test-suite spec
     , array
     , base
     , containers
+    , gloss
     , hspec
     , hspec-core
     , matrix
