@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ec2e3a238498c547567ce0606fd7a0bf168c5acf71bcfb05469de7657dd7a517
+-- hash: 92875e62be487e5ff2e4efa747d96dfa554284af4cddaf2cfaf46e5b9755e431
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -88,6 +88,16 @@ library
       Tema_24.ProblemaDelViajante
       Tema_24.ProductoDeCadenaDeMatrices
       Tema_25.Parabola1
+      Tema_26.Arbol
+      Tema_26.ArbolFractal
+      Tema_26.ArbolFractalColoreado
+      Tema_26.Copo_de_nieve_de_Koch
+      Tema_26.Curva_de_Koch
+      Tema_26.Dragon
+      Tema_26.Dragon2
+      Tema_26.Sierpinski
+      Tema_26.Tronco
+      Tema_26.TroncoConRamas
       Tema_3
       Tema_4
       Tema_5
