@@ -86,3 +86,4 @@ Los códigos de los temas son
   + [[./src/Tema_24/ProblemaDelViajante.hs][Problema del viajante]].
 + Tema 25: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_25][Programación de dibujos con Gloss]].
 + Tema 26: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_26][Programación de fractales con Gloss]].
++ Tema 27: [[https://github.com/jaalonso/I1M-Cod-Temas/blob/master/src/Tema_27][Programación de animaciones con Gloss]].
