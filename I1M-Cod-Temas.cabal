@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 92875e62be487e5ff2e4efa747d96dfa554284af4cddaf2cfaf46e5b9755e431
+-- hash: ae642f87dcc414d65ebb01bbbc37625be9a1375c2e39f6aabbf890e766eb7711
 
 name:           I1M-Cod-Temas
 version:        0.1.0.0
@@ -98,6 +98,7 @@ library
       Tema_26.Sierpinski
       Tema_26.Tronco
       Tema_26.TroncoConRamas
+      Tema_28
       Tema_3
       Tema_4
       Tema_5
