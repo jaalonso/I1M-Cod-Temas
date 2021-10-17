@@ -4,6 +4,8 @@
 -- Sevilla, 23 de mayo de 2013
 -- ---------------------------------------------------------------------
 
+module Tema_26.Tronco where
+
 import Graphics.Gloss
 
 main :: IO ()

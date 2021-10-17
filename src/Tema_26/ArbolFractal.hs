@@ -4,17 +4,19 @@
 -- Sevilla, 4 de Agosto de 2011
 -- ---------------------------------------------------------------------
 
+module Tema_26.ArbolFractal where
+
 import Graphics.Gloss
 import System.IO
 
 main :: IO ()
-main = do 
+main = do
   hSetBuffering stdout NoBuffering
   putStr "Árbol fractal.  Introduce el paso [0..6]: "
   paso <- readLn
   display (InWindow "Arbol fractal" (700,800) (20,20)) black (dibujo paso)
 
-dibujo :: Int -> Picture        
+dibujo :: Int -> Picture
 dibujo paso = Color green (Translate 0 (-300) (arbol paso))
 
 tronco :: Picture
@@ -29,5 +31,3 @@ arbol n = Pictures [tronco,
                     Translate 0 120 (Rotate 40    menor),
                     Translate 0  60 (Rotate (-40) menor) ]
     where menor = Scale 0.5 0.5 (arbol (n-1))
-
-

@@ -4,6 +4,8 @@
 -- Sevilla, 24 de Mayo de 2014
 -- ---------------------------------------------------------------------
 
+module Tema_26.Dragon where
+
 import Graphics.Gloss
 import System.IO
 

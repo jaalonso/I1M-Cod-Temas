@@ -4,6 +4,8 @@
 -- Sevilla, 4 de Agosto de 2011
 -- ---------------------------------------------------------------------
 
+module Tema_26.Arbol where
+
 import Graphics.Gloss
 
 main :: IO ()

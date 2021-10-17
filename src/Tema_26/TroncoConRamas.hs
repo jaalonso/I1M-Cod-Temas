@@ -4,6 +4,8 @@
 -- Sevilla, 23 de mayo de 2014
 -- ---------------------------------------------------------------------
 
+module Tema_26.TroncoConRamas where
+
 import Graphics.Gloss
 
 main :: IO ()

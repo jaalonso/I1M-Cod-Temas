@@ -3,6 +3,8 @@
 -- José A. Alonso Jiménez https://jaalonso.github.com
 -- =====================================================================
 
+module Tema_28 where
+
 -- ---------------------------------------------------------------------
 -- Importación de librerías                                           --
 -- ---------------------------------------------------------------------
@@ -230,6 +232,7 @@ sumaSuma n = suma n + sumaSuma (n-1)
 --    3.4999999999999953*10^-6*x^2+5.0000000000001432*10^-5*x+0.02
 
 -- Por tanto, el polinomio es
+t_sumaSuma :: Fractional a => a -> a
 t_sumaSuma n = 3.5e-6*n^2+5e-5*n+0.02
 
 -- La comprobación es
@@ -295,9 +298,9 @@ t_sumaSuma n = 3.5e-6*n^2+5e-5*n+0.02
 -- ---------------------------------------------------------------------
 
 nEsimaAproximacion :: Float -> Float -> Int -> Float
-nEsimaAproximacion a x 0     = x
-nEsimaAproximacion a x (n+1) =
-    (a / (nEsimaAproximacion a x n) + (nEsimaAproximacion a x n)) / 2.0
+nEsimaAproximacion _ x 0     = x
+nEsimaAproximacion a x n =
+    (a / (nEsimaAproximacion a x (n-1)) + (nEsimaAproximacion a x (n-1))) / 2.0
 
 -- ---------------------------------------------------------------------
 -- Ejercicio 4.2. Calcular el valor de las siguientes expresiones
@@ -333,6 +336,7 @@ x ~= y = abs(x-y) < 0.001
 -- ---------------------------------------------------------------------
 
 -- La propiedad es
+prop_nEsimaAproximacion :: Float -> Property
 prop_nEsimaAproximacion a =
     a >= 0 ==> or [(nEsimaAproximacion a 1 n)^2 ~= a | n <- [1..]]
 
@@ -440,7 +444,7 @@ prop_nEsimaAproximacion a =
 -- ---------------------------------------------------------------------
 
 potencia :: Integer -> Integer -> Integer
-potencia x 0 = 1
+potencia _ 0 = 1
 potencia x n | even n    = potencia (x*x) (div n 2)
              | otherwise = x * potencia (x*x) (div n 2)
 

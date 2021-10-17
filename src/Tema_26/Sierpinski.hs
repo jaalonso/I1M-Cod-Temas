@@ -4,6 +4,8 @@
 -- Sevilla, 19 de Agosto de 2013
 -- ---------------------------------------------------------------------
 
+module Tema_26.Sierpinski where
+
 import Graphics.Gloss
 import System.IO
 

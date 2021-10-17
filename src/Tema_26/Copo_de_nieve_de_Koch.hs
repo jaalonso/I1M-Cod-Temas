@@ -4,6 +4,8 @@
 -- Sevilla, 4 de Agosto de 2011
 -- ---------------------------------------------------------------------
 
+module Tema_26.Copo_de_nieve_de_Koch where
+
 import Graphics.Gloss
 import System.IO
 
