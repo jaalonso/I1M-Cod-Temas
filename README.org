@@ -1,6 +1,6 @@
 En este repositorio se encuentra el código en Haskell de los temas del curso de
 [[https://jaalonso.github.io/cursos/i1m/][Informática de 1º del Grado en Matemáticas]] de la Universidad de Sevilla.
-
+ 
 Se puede instalar como se explica en la [[./Instalacion.org][Guía de instalación]].
 
 Los códigos de los temas son
