@@ -193,7 +193,7 @@ prop_polUnidad p =
 --    valor ejPol1 0     ==  3
 --    valor ejPol1 1     ==  1
 --    valor ejPol1 (-2)  ==  31
-valor:: (Num a, Eq a) => Polinomio a -> a -> a
+valor :: (Num a, Eq a) => Polinomio a -> a -> a
 valor p c
   | esPolCero p = 0
   | otherwise   =  b*c^n + valor r c
